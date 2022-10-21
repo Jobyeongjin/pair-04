@@ -12,9 +12,11 @@
   </head>
 
   <body>
-    <h1>logo</h1>
-    <hr>
-    {% block content %}{% endblock %}
+    <div class="container">
+      {% include 'navbar.html' %}
+      <hr>
+      {% block content %}{% endblock %}
+    </div>
 
   </body>
 
