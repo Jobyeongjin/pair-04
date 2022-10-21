@@ -16,7 +16,7 @@ def index(request):
 @login_required
 def create(request):
     if request.method == "POST":
-        form = ReviewForm(request.POST)
+        form = ReviewForm(request.POST, request.FILES)
         if form.is_valid():
             review = form.save(commit=False)
             review.user = request.user
@@ -37,7 +37,7 @@ def update(request, pk):
     review = Review.objects.get(pk=pk)
     if request.user == review.user:
         if request.method == 'POST':
-            form = ReviewForm(request.POST, instance=review)
+            form = ReviewForm(request.POST, request.FILES, instance=review)
             if form.is_valid():
                 form.save()
                 return redirect('review:detail', review.pk)
