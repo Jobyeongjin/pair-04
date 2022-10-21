@@ -13,7 +13,8 @@
           {{ user.last_name }}</h6>
 
         <a href="{% url 'accounts:update' user.pk %}" class="card-link btn btn-primary">정보 수정</a>
-        <a href="#" class="card-link btn btn-info">비밀번호 변경</a>
+        <a href="{% url 'accounts:change_password' user.pk %}" class="card-link btn btn-info">비밀번호 변경</a>
+        <a href="{% url 'accounts:delete' %}" class="card-link btn btn-danger">회원탈퇴</a>
       </div>
     </div>
 
