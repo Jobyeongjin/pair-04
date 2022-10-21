@@ -89,3 +89,25 @@ def delete_comment(request, review_pk, comment_pk):
         comment.delete()
     return redirect('review:detail', review.pk)
 
+from django.views.generic import FormView
+from .forms import ReviewSearchForm
+# model orm으로 where 절에 or문을 추가하고 싶을 때 사용.
+# https://velog.io/@mongle/Django-Web-Project-%EA%B0%9C%EB%B0%9C%EC%9D%BC%EC%A7%804-%EA%B2%80%EC%83%89-%EA%B8%B0%EB%8A%A5-%EC%B6%94%EA%B0%80
+from django.db.models import Q
+from django.urls import reverse
+
+class SearchFormView(FormView):
+    form_class = ReviewSearchForm
+    template_name = 'reviews/review_search.html'
+
+    def form_valid(self, form):
+        searchWord = form.cleaned_data['search_word']
+        review_list = Review.objects.filter(Q(movie_name__icontains=searchWord) | Q(title__icontains=searchWord) | Q(content__icontains=searchWord)).distinct()
+
+        context = {}
+        context['form'] = form
+        context['search_term'] = searchWord
+        context['object_list'] = review_list
+
+        return render(self.request, self.template_name, context)
+
