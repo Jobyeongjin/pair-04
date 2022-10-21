@@ -1,0 +1,202 @@
+[
+  {
+    "model": "movies.movie",
+    "fields": {
+      "id": 616820,
+      "title": "할로윈 엔드",
+      "poster_path": "/1ScxCajFdgMNWBn9BuFlB4sMTAJ.jpg",
+      "vote_average": 6.8,
+      "overview": "4년 전 또 한번 할로윈의 악몽을 겪은 뒤 조용한 일상을 보내고 있는 ‘로리 스트로드’와 손녀 ‘앨리슨’.  어느 날 ‘앨리슨’은 베이비시터 살인자로 낙인 찍힌 ‘코리’와 만나게 되고 이 둘은 급격히 가까워진다.  하지만 ‘코리’에게서 ‘마이클 마이어스’와 같은 어두운 면모를 발견한 ‘로리 스트로드’는  그에게 ‘앨리슨’과 멀어지라고 경고한다.  이후 해든필드에 끔찍한 살인 사건이 벌어지면서 ‘마이클 마이어스’가 돌아왔다는 소문이 퍼지기 시작하고  ‘로리 스트로드’는 이제 그와의 악연을 끊어내려 하는데…"
+    }
+  },
+  {
+    "model": "movies.movie",
+    "fields": {
+      "id": 760161,
+      "title": "오펀: 천사의 탄생",
+      "poster_path": "/vKIhsEVEtLTwTkmLSDNi230Zr3Q.jpg",
+      "vote_average": 6.8,
+      "overview": "엄청난 비밀을 숨긴 사이코패스가 에스토니아의 정신병동을 탈출,\r 부유한 가족의 실종된 딸 ‘에스더’로 사칭해 미국에 온다.\r 재회의 기쁨도 잠시, 어딘지 낯선 딸의 정체를 눈치챈 엄마는\r 가족을 지키기 위해 에스더와 맞서는데...  누구도 상상 못한 충격적인 반전이 기다린다!"
+    }
+  },
+  {
+    "model": "movies.movie",
+    "fields": {
+      "id": 575322,
+      "title": "제미나이: 지구 최후의 날",
+      "poster_path": "/iVwd4NKcvWIfxP36DsCBHd7lqEE.jpg",
+      "vote_average": 5.5,
+      "overview": "치명적인 바이러스로 지구의 식물들이 파괴된 지 3년 후 산소가 부족해지고 과학자들은 전 인류를 구하기 위해 새로운 행성을 찾는 미션을 받고 우주로 떠난다. 하지만, 우주선은 입력한 궤도와는 전혀 다른 방향으로 이끌려가 알 수 없는 행성에 고립되고 비행 멤버들은 상상할 수 없는 존재로부터 공격을 받기 시작하는데…!"
+    }
+  },
+  {
+    "model": "movies.movie",
+    "fields": {
+      "id": 985939,
+      "title": "폴: 600미터",
+      "poster_path": "/1OdA3gOq8N5KWwXsZhYVHbeyx8l.jpg",
+      "vote_average": 7.4,
+      "overview": "내려갈 길이 끊겨버린 600미터 TV 타워 위에서  두 명의 친구가 살아남기 위해 펼치는 사상 최초의 고공 서바이벌 여기에서"
+    }
+  },
+  {
+    "model": "movies.movie",
+    "fields": {
+      "id": 718930,
+      "title": "불릿 트레인",
+      "poster_path": "/msh4N8dxHk4FeEPZ8VBqHQFQYjI.jpg",
+      "vote_average": 7.5,
+      "overview": "운이 없기로 유명한 킬러 레이디버그는 초고속 열차에 탑승해 의문의 서류 가방을 가져오라는 미션을 받는다. 생각보다 쉽게 미션을 클리어한 후 열차에서 내리려는 그를 가로막는 것이 있었으니,  그것은 바로 전세계에서 몰려든 초특급 킬러들. 열차에서 내릴 수 없다면 목숨을 걸고 가방을 지켜야만 한다. 과연 레이디버그는 무사히 열차에서 내려 미션을 완수할 수 있을까?"
+    }
+  },
+  {
+    "model": "movies.movie",
+    "fields": {
+      "id": 960704,
+      "title": "강철의 연금술사 완결편: 최후의 연성",
+      "poster_path": "/qJD1kg5vrKKllZaZWyELVdxdbid.jpg",
+      "vote_average": 6.4,
+      "overview": "엘릭 형제의 길고 파란만장했던 여정, 그 종지부를 찍을 완결편 2부작의 마지막 작품. 에드워드와 알폰스가 국가 전체를 뒤흔들 초월적인 위협에 맞선다."
+    }
+  },
+  {
+    "model": "movies.movie",
+    "fields": {
+      "id": 642885,
+      "title": "호커스 포커스 2",
+      "poster_path": "/xpDdvIaTHn38F17pPseL1MQI05B.jpg",
+      "vote_average": 7.7,
+      "overview": "누군가가 검은 불꽃 초에 불을 붙여 17세기에 활동했던 자매들을 되살린 지도 29년이 흘렀다. 이제 자매들은 원수를 갚으려 한다. 핼러윈 전날의 동이 터오기 전에 세일럼에서 대혼란을 일으키려는 마녀들을 막아설 사람은 세 고등학생뿐이다."
+    }
+  },
+  {
+    "model": "movies.movie",
+    "fields": {
+      "id": 852046,
+      "title": "아테나",
+      "poster_path": "/66hefmZ1ZVLO1Hb57sZVGSlDAmM.jpg",
+      "vote_average": 6.6,
+      "overview": "어린 소년이 살해된 비극적인 사건을 계기로 아테나 지구에 전면전이 촉발된다. 그리고 피해자의 형들이 그 치열한 대립의 한가운데에 놓이는데."
+    }
+  },
+  {
+    "model": "movies.movie",
+    "fields": {
+      "id": 791155,
+      "title": "시크릿 헤드쿼터스",
+      "poster_path": "/8PsHogUfvjWPGdWAI5uslDhHDx7.jpg",
+      "vote_average": 6.8,
+      "overview": "방과 후 시간을 보내는 동안 찰리와 그의 친구들은 그의 집 아래에 숨겨져 있는 세계에서 가장 강력한 슈퍼히어로의 본부를 발견한다. 악당이 공격하면 팀을 이뤄 본부를 지키고 세상을 구해야 한다."
+    }
+  },
+  {
+    "model": "movies.movie",
+    "fields": {
+      "id": 916605,
+      "title": "인퍼널 머신",
+      "poster_path": "/bSqpOGzaKBdGkBLmcm1JJIVryYy.jpg",
+      "vote_average": 7,
+      "overview": "1981년 녹스빌 침례대학에 침입한 괴한이 라이플총으로 13명을 사살하고 26명에게 중상을 입힌다. 녹스빌 총기 난사범으로 밝혀진 17살 소년 드와이트는 '지옥의 기계'에서 영감을 받았다고 진술한다. 지옥의 기계를 쓴 작가 브루스 코번은 죄책감 등으로 캘리포니아 남부의 외딴 마을에 은둔한다. 25년 후, 인터뷰를 요청하는 작가 지망생 윌리엄 듀켄트의 편지가 브루스에게 도착한다. 그날의 기억과 함께 다시 악몽과 술에 빠져들던 브루스는 윌리엄의 제안을 거절한다. 하지만 잉크 리본과 함께 윌리엄의 자필 편지가 끊임없이 배달되고 강박증에 시달리던 브루스는 집을 지킬 수 있는 대형견 사울까지 입양한다. 윌리엄에게 음성 메일을 남기던 브루스가 술에 취해 전화 부스에서 잠든다. 그곳을 지나던 페르디다스 경찰 로라 히긴스가 브루스를 깨워 집까지 바래다준다. 결국 브루스는 윌리엄을 카페로 초대하지만그는 모습을 드러내지 않는다. 그리고 윌리엄의 주소지가 녹스빌 참사의 주인공인 드와이트가 살았던 곳으로 드러난다. 브루스는 윌리엄과 드와이트의 관계를 확인하기 위해 히긴스의 도움으로 뉴멕시코 연방 교도소에 수감되어 있는 드와이트를 면회한다. 그 후 히긴스가 누군가의 사주로 브루스에게 접근했으며 윌리엄이 브루스의 모든 사생활을 엿보고 있다는 사실이 밝혀지는데..."
+    }
+  },
+  {
+    "model": "movies.movie",
+    "fields": {
+      "id": 436270,
+      "title": "블랙 아담",
+      "poster_path": "/mEdMHGy1FfCUc7PskFO0tibm8jp.jpg",
+      "vote_average": 7.9,
+      "overview": "기원전 가장 번성하고 위대한 고대 국가였지만 현재는 국제 군사 조직 인터갱의 독재 국가로 전락한 칸다크. 인터갱의 눈을 피해 고대 유물을 찾던 '아드리아나'는 우연히 5000년 동안 잠들어 있던 '블랙 아담'을 깨우게 된다.  엄청난 괴력과 스피드, 방탄 능력과 자유자재의 고공비행, 번개를 쏘는 능력까지. 온몸이 무기인 '블랙 아담'은 자신의 앞을 막아서는 인터갱들을 모조리 쓸어버리고 칸다크 국민들은 이에 열광한다. 한편, 그의 폭주를 막기 위해 호크맨, 닥터 페이트, 아톰 스매셔, 사이클론으로 구성된 히어로 군단 '저스티스 소사이어티'가 칸다크에 나타나는데..."
+    }
+  },
+  {
+    "model": "movies.movie",
+    "fields": {
+      "id": 717728,
+      "title": "Jeepers Creepers: Reborn",
+      "poster_path": "/aGBuiirBIQ7o64FmJxO53eYDuro.jpg",
+      "vote_average": 5.8,
+      "overview": ""
+    }
+  },
+  {
+    "model": "movies.movie",
+    "fields": {
+      "id": 886396,
+      "title": "Batman and Superman: Battle of the Super Sons",
+      "poster_path": "/nBaVsNvUxIuvhPw3xTaAJIw8me4.jpg",
+      "vote_average": 8.2,
+      "overview": ""
+    }
+  },
+  {
+    "model": "movies.movie",
+    "fields": {
+      "id": 884363,
+      "title": "토고",
+      "poster_path": "/vBvHFU97cmep48zbl5X85gvXCn.jpg",
+      "vote_average": 6.7,
+      "overview": "도로에 주차된 차량을 관리하며 살아가는 남자. 마약상들이 그와 친구들에게 거리에서 마약을 팔 것을 종용하자, 생계 수단을 지키기 위해 분연히 일어선다."
+    }
+  },
+  {
+    "model": "movies.movie",
+    "fields": {
+      "id": 429473,
+      "title": "루",
+      "poster_path": "/5F6NM04jwwng3bUE2Q0lGNmFjmw.jpg",
+      "vote_average": 6.6,
+      "overview": "반려견과 함께 조용히 살아가던 퉁명스러운 성격의 여인. 폭풍우 속에 이웃의 어린 딸이 납치되자 구조에 나서, 사나운 자연과 어두운 과거에 맞서 격렬한 싸움을 시작한다."
+    }
+  },
+  {
+    "model": "movies.movie",
+    "fields": {
+      "id": 532639,
+      "title": "피노키오",
+      "poster_path": "/aFVjf2zcFzoNgbDKDEHiIw2g1DR.jpg",
+      "vote_average": 6.7,
+      "overview": "목수 ‘제페토’의 간절한 소원으로 태어난 나무 인형 ‘피노키오’는  진짜 사람이 되기 위해 자신의 양심이 되어줄 귀뚜라미 ‘지미니’와 함께  진실되고 용감한 마음을 가지기로 약속한다.  그러나 거리의 교활한 여우의 꾀임에 넘어간 피노키오는 서커스단에 들어가게 되고, 이기적인 어른들의 욕심으로 철장에 갇혀버리고 만다.  한편, 사라진 피노키오를 찾기 위해 길을 나선 ‘제페토’는 폭우 속에 목숨을 잃을 위기에 처하고 마는데…"
+    }
+  },
+  {
+    "model": "movies.movie",
+    "fields": {
+      "id": 760741,
+      "title": "비스트",
+      "poster_path": "/xp6EOh0HEN4bx4ot8UfcYnUpT8U.jpg",
+      "vote_average": 7,
+      "overview": "두 딸 ‘메어’, ‘노라’와 함께 시간을 보내기 위해 친구 ‘마틴’이 있는 남아프리카를 찾은 의사 ‘네이트’.  그러나 즐거운 여행도 잠시, 처참히 죽어 있는 마을 사람들을 목격한 이들은 곧이어 이 모든 상황을 벌인 사자에게 맹목적으로 쫓기기 시작한다.  무전조차 터지지 않는 고립된 지역에서 마을을 완전히 장악해버린 사자로부터 벗어나기 위해 서로 의지하며 고군분투하는데…"
+    }
+  },
+  {
+    "model": "movies.movie",
+    "fields": {
+      "id": 335795,
+      "title": "몬스터 하이: 더 무비",
+      "poster_path": "/tn3GWm0Erehkpur8PUuYWxGpul5.jpg",
+      "vote_average": 7,
+      "overview": ""
+    }
+  },
+  {
+    "model": "movies.movie",
+    "fields": {
+      "id": 616037,
+      "title": "토르: 러브 앤 썬더",
+      "poster_path": "/bZLrpWM065h5bu1msUcPmLFsHBe.jpg",
+      "vote_average": 6.7,
+      "overview": "이너피스를 위해 자아 찾기 여정을 떠난 천둥의 신 토르. 그러나 우주의 모든 신들을 몰살하려는 신 도살자 고르의 등장으로 토르의 안식년 계획은 산산조각 나 버린다. 토르는새로운 위협에 맞서기 위해 킹 발키리, 코르그, 그리고 전 여자친구 제인과 재회하게 되고, 그녀가 묠니르를 휘두르는 마이티 토르가 되어 나타나 모두를 놀라게 한다. 이제 팀 토르는 고르의 복수에 얽힌 미스터리를 밝히고 더 큰 전쟁을 막기 위한 전 우주적 스케일의 모험을 시작하는데..."
+    }
+  },
+  {
+    "model": "movies.movie",
+    "fields": {
+      "id": 1024530,
+      "title": "그림커티",
+      "poster_path": "/ulYkLO62DYxegMHYSnA9bF3cqLs.jpg",
+      "vote_average": 5.9,
+      "overview": "평범한 십 대 소녀와 남동생은 부모님의 히스테리로 생긴 끔찍한 인터넷 밈을 멈춰야만 한다."
+    }
+  }
+]

@@ -11,7 +11,7 @@ from django.contrib.auth import update_session_auth_hash
 
 def main(request):
     if request.user.is_authenticated:
-        return redirect('review:index')
+        return redirect('movies:index')
     users = get_user_model().objects.all()
     context = {
         "users": users
