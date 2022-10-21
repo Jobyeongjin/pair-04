@@ -1,9 +1,11 @@
 {% extends 'base.html' %}
-
 {% load django_bootstrap5 %}
 
+
 {% block content %}
-  <div class="container">
+{% include 'navbar.html' %}
+
+<div class="container">
     <h1>accounts:profile.html</h1>
     <div class="card">
       <div class="card-body">
