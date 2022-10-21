@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from reviews.models import Review, Comment
 from .forms import ReviewForm, CommentForm
 from django.contrib.auth.decorators import login_required
+from django.views.decorators.http import require_POST
 
 def index(request):
     reviews = Review.objects.order_by("-pk")
@@ -110,4 +111,17 @@ class SearchFormView(FormView):
         context['object_list'] = review_list
 
         return render(self.request, self.template_name, context)
+@require_POST
+def likes(request, review_pk):
+    if request.user.is_authenticated:
+        review = Review.objects.get(pk = review_pk)
+
+        if review.like_users.filter(pk=request.user.pk).exists():
+            review.like_users.remove(request.user)
+
+        else:
+            review.like_users.add(request.user)
+        return redirect('review:detail', review_pk)
+    return redirect('accounts:login')
+
 
