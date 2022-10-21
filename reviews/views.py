@@ -9,7 +9,9 @@ from django.db.models import Q
 
 def index(request, movie_pk):
     movie = Movie.objects.get(pk = movie_pk)
-    reviews = movie.review_set.all()
+    reviews = Review.objects.filter(movie = movie_pk)
+    for review in reviews:
+        print(review.content)
     return render(
         request,
         "reviews/index.html",
@@ -78,7 +80,7 @@ def detail(request, review_pk, movie_pk):
     comment_form = CommentForm()
     context = {
         'review' : review,
-        'comments' : review.comment_set.filter(movie=movie_pk),
+        'comments' : review.comment_set.all().filter(movie=movie_pk),
         # 'comments' : review.comment_set.all(),
         'comment_form' : comment_form,
     }

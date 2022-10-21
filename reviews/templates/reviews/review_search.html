@@ -1,20 +1,36 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>review Search</h1>
+  {% include "navbar.html" %}
+  <div class="container" style="height:100px"></div>
+  <div class="container">
+    <div class="row mb-2">
+      <div class="col-6">
+        {% if object_list %}
+          {% for review in object_list %}
+            <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+              <div class="col p-4 d-flex flex-column position-static">
+                <strong class="d-inline-block mb-2 text-primary">{{ review.movie.title }}</strong>
+                <h3 class="mb-0">
+                  <a href='{% url 'review:detail' review.movie.id review.pk %}'>{{ review.title }}</a>
+                </h3>
+                <div class="mb-1 text-muted">{{ review.updated_at|date:"N d, Y" }}</div>
+                <p class="card-text mb-auto">{{ review.content }}</p>
+                <a href="#" class="stretched-link">Continue reading</a>
+              </div>
+              <div class="col-auto d-none d-lg-block">
+                <img src="{{ review.user.profile.image.url }}" alt="img" width="45px" height="45px" class="rounded-circle flex-shrink-0 mx-2 border border-warning border-3">
+              </div>
+            </div>
+          {% endfor %}
+        </div>
 
-  {% if object_list %}
-    {% for review in object_list %}
-      <h2>
-        <a href='{% url 'review:detail' review.movie.id review.pk %}'>{{ review.title }}</a>
-      </h2>
-      {{ review.updated_at|date:"N d, Y" }}
-      <p>{{ review.content }}</p>
-    {% endfor %}
-  {% elif search_term %}
-    <!-- 검색란이 공란인지 확인-->
-    <b>
-      <i>Search Word({{ search_term }}) Not Found</i>
-    </b>
-  {% endif %}
-{% endblock %}
+      {% elif search_term %}
+        <!-- 검색란이 공란인지 확인-->
+        <b>
+          <i>Search Word({{ search_term }}) Not Found</i>
+        </b>
+      {% endif %}
+    </div>
+
+  {% endblock %}

@@ -114,13 +114,14 @@
         <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
           <div class="d-flex justify-content-between">
             <strong class="text-gray-dark">{{comment.content}}</strong>
-            {% if request.user == comment.user %}
-            <a href="{% url 'review:delete_comment' review.pk comment.pk%}">삭제</a>
-            {% endif %}
   
           </div>
           <span class="d-block">@{{comment.user.username}}</span>
         </div>
+        {% if request.user == comment.user %}
+        <a href="{% url 'review:delete_comment' review.movie.id review.pk comment.pk %}">삭제</a>
+        {% endif %}
+        
       </div>
       {% endfor %}
     </div>
