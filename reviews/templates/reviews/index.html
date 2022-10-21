@@ -1,43 +1,52 @@
 {% extends 'base.html' %}
 
 {% block content %}
+{% include 'navbar.html' %}
 
-  <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">title</th>
-        <th scope="col">content</th>
-        <th scope="col">movie_name</th>
-        <th scope="col">image</th>
-        <th scope="col">likes</th>
-        <th scope="col">comments</th>
-      </tr>
-    </thead>
-    <tbody>
 
-      {% for review in reviews %}
-        <tr>
-          <td>{{ review.title }}</td>
-          <td>
-            <a href="{% url 'review:detail'  review.movie.id review.pk%}">{{ review.content }}</a>
-          </td>
-          <td>{{ review.movie.title }}</td>
 
-          {% if review.image %}
-            <td><img src="{{ review.image.url }}" alt="" width="100px" height="100px"></td>
-          {% else %}
-            <td></td>
-          {% endif %}
-          <td>
-            <span class="badge bg-secondary">{{ review.like_users.all|length}}</span>
-          </td>
-          <td>
-            <span class="badge bg-secondary">{{ review.comment_set.all|length}}</span>
-          </td>
-        </tr>
-      {% endfor %}
+<div class="container review-content">
+  <!-- Index-Nav -->
+  <div class="index-nav d-flex flex-column">
+    <ul class="index-icon">
+      <li><i class="fa-solid fa-house fa-2x"></i><span class="index-text">홈</span></li>
+      <li><i class="fa-regular fa-user fa-2x"></i><span class="index-text">프로필</span></li>
+      <li><i class="fa-regular fa-comment-dots fa-2x"></i><span class="index-text">댓글</span></li>
+      <li><i class="fa-regular fa-bell fa-2x"></i><span class="index-text">알림</span></li>
+    </ul>
+    <a href="{% url 'review:create' %}"><button class="index-btn">리뷰작성</button></a>
+  </div>
 
-    </tbody>
-  </table>
+  <!-- Index-Content -->
+  <div class="index-content px-3">
+    {% for review in reviews %}
+      <div class="card-top">
+        <div class="card-profile">
+          <img src="{{ review.user.profile.image.url }}" alt="" width="55px" height="55px" class="rounded-circle flex-shrink-0 mx-2">
+          {{ review.user }}
+        </div>
+        <i class="fa-solid fa-ellipsis fa-lg"></i>
+      </div>
+      <a href="{% url 'review:detail' review.pk %}">
+        <p class="my-3">{{ review.title }}</p>
+        {% if review.image %}
+        <div class="card-img mt-3">
+          <img src="{{ review.image.url }}" alt="" width="100%" height="100%" style="border-radius: 20px;">
+        </div>
+      {% endif %}
+      </a>
+      <div class="card-icon d-flex justify-content-around align-items-center">
+        <i class="fa-regular fa-comment fa-lg"></i>
+        <i class="fa-regular fa-heart fa-lg"></i>
+        <i class="fa-solid fa-cloud-arrow-down fa-lg"></i>
+      </div>
+    <hr>
+    {% endfor %}
+  </div>
+
+  <!-- Index-Foryou -->
+  <div class="index-foryou"></div>
+</div>
+
 
 {% endblock content %}

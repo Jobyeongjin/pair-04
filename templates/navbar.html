@@ -16,40 +16,30 @@
 </head>
 
 <body>
-  <header
-    class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
-    <div class="container d-flex justify-content-around align-items-center">
-      <a class="navbar-brand" href="#">
-        <img src="{% static 'images/logo.png' %}" alt="Logo" width="50" height="40"
-          class="d-inline-block align-text-top">
-      </a>
-
-      <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-        <li>
-          <a href="{% url 'accounts:main' %}" class="nav-link px-2 link-secondary">Home</a>
-        </li>
-        <li>
-          {% comment %} <a href="{% url 'review:index' %}" class="nav-link px-2 link-dark">review</a> {% endcomment %}
-        </li>
-      </ul>
-
-      <div class="col-md-3 text-end">
+  <nav>
+    <div class="container d-flex justify-content-between align-items-center my-3">
+      <div class="">
+        <a class="d-flex align-items-center" href="#">
+          <img src="{% static 'images/logo.png' %}" alt="" width="50" height="40">
+        </a>
+      </div>
+      <div class="d-flex align-items-center">
         {% if request.user.is_authenticated %}
-        <form action="{% url 'review:search' %}" method="POST" class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
-            {% csrf_token %}
-            {% comment %} <input name='search_word' type="text"> {% endcomment %}
+        <form action="{% url 'review:search' %}" method="POST" class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3 nav-form" role="search">
+          {% csrf_token %}
+          {% comment %} <input name='search_word' type="text"> {% endcomment %}
             <input name='search_word' type="search" class="form-control form-control-dark text-bg-dark" placeholder="Search..." aria-label="Search">
-
-          </form>
-        <a href="{% url 'accounts:logout' %}">로그아웃</a>
-        <a href="{% url 'accounts:profile' user.pk %}">회원정보</a>
-        {% else %}
-        <a href="{% url 'accounts:login' %}">로그인</a>
-        <a href="{% url 'accounts:signup' %}">회원가입</a>
-        {% endif %}
+        </form>
+        <div class="index-profile">
+          <a href="{% url 'accounts:profile' user.pk %}"><i class="fa-solid fa-gear fa-lg"></i></a>
+          {% else %}
+          <a href="{% url 'accounts:login' %}">로그인</a>
+          <a href="{% url 'accounts:signup' %}">회원가입</a>
+          {% endif %}
+        </div>
       </div>
     </div>
-  </header>
+  </nav>
 </body>
 
 </html>

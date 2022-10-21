@@ -1,9 +1,44 @@
+@import 'login.css';
+@import 'review/index.css';
+
 a {
   color: #000;
   text-decoration: none;
 }
 
+a:hover {
+  color: #000;
+}
 
+button {
+  border: none;
+  outline: none;
+}
+
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: #fff;
+}
+
+ul {
+  list-style: none;
+  padding-left: 0px;
+}
+
+
+/* Navbar */
+.nav-form input:last-child {
+  width: 300px;
+  border: none;
+  border-radius: 40px;
+  padding: 10px;
+  background-color: #e0dfdc;
+  color: #000;
+}
+
+/* Main */
 .main-back {
   background-image: url(https://i.pinimg.com/564x/23/7a/b9/237ab9a429e95b32b836668a841e9697.jpg);
   background-repeat: no-repeat;
@@ -27,24 +62,25 @@ a {
   align-items: center;
   width: 100%;  
   height: 100%;
-  background-color: #000;
+  background-color: #fff;
 }
 
 .login-btn a {
   padding: 10px 120px;
   border-radius: 50px;
-  border: 1px solid gray;
-  color: #1D9BEF;
+  border: 1px solid #000;
+  color: #000;
   transition: all ease-in-out .3s;
 }
 
 .login-btn a:hover {
-  background-color: #fff;
+  background-color: #000;
+  color: #fff;
 }
 
 .signup-btn a {
   padding: 10px 113px;
-  border: 1px solid gray;
+  border: 1px solid #000;
   border-radius: 50px;
   background-color: #1D9BEF;
   color: #fff;
@@ -52,6 +88,5 @@ a {
 }
 
 .signup-btn a:hover {
-  background-color: #fff;
-  color: #1D9BEF;
+  background-color: #000;
 }
