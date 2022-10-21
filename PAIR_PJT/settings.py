@@ -23,9 +23,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 import os, json
 from django.core.exceptions import ImproperlyConfigured
 
-BASE_DIR = Path(__file__).resolve().parent.parent
-
-
 SECRET_KEY = 'django-insecure-uv6)5qgi8&@e^7ifgs=znux@zb+xr!^t%5%!300uql1is2!@jx' 
 
 
