@@ -40,6 +40,8 @@ ALLOWED_HOSTS = []
 MEDIA_ROOT = BASE_DIR / 'images'
 MEDIA_URL = '/media/'
 
+AUTH_USER_MODEL = 'accounts.User'
+
 INSTALLED_APPS = [
     'accounts',
     'django_bootstrap5',
