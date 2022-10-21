@@ -25,18 +25,32 @@
           <li>
             <a href="{% url 'review:index' %}" class="nav-link px-2 link-dark">review</a>
           </li>
+          <form action="{% url 'review:search' %}" method="POST" class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+            {% csrf_token %}
+            {% comment %} <input name='search_word' type="text"> {% endcomment %}
+            <input name='search_word' type="search" class="form-control form-control-dark text-bg-dark" placeholder="Search..." aria-label="Search">
+
+          </form>
         </ul>
 
         <div class="col-md-3 text-end">
-          
+
           {% if request.user.is_authenticated %}
-          <button type="button" class="btn btn-outline-primary me-2"><a href="{% url 'accounts:logout' %}">로그아웃</a></button>
-          <button class="btn btn-outline-primary me-2"><a href="{% url 'accounts:profile' user.pk %}">회원정보</a></button>
-          {% else %} 
-          <button type="button" class="btn btn-outline-primary me-2"><a href="{% url 'accounts:login' %}">로그인</a></button>
-          <button type="button" class="btn btn-outline-primary"><a href="{% url 'accounts:signup' %}">회원가입</a></button>
+            <button type="button" class="btn btn-outline-primary me-2">
+              <a href="{% url 'accounts:logout' %}">로그아웃</a>
+            </button>
+            <button class="btn btn-outline-primary me-2">
+              <a href="{% url 'accounts:profile' user.pk %}">회원정보</a>
+            </button>
+          {% else %}
+            <button type="button" class="btn btn-outline-primary me-2">
+              <a href="{% url 'accounts:login' %}">로그인</a>
+            </button>
+            <button type="button" class="btn btn-outline-primary">
+              <a href="{% url 'accounts:signup' %}">회원가입</a>
+            </button>
           {% endif %}
-            
+
         </div>
       </header>
     </div>

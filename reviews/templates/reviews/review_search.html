@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>review Search</h1>
+
+  {% if object_list %}
+    {% for review in object_list %}
+      <h2>
+        <a href='{% url 'review:detail' review.pk %}'>{{ review.title }}</a>
+      </h2>
+      {{ review.updated_at|date:"N d, Y" }}
+      <p>{{ review.content }}</p>
+    {% endfor %}
+  {% elif search_term %}
+    <!-- 검색란이 공란인지 확인-->
+    <b>
+      <i>Search Word({{ search_term }}) Not Found</i>
+    </b>
+  {% endif %}
+{% endblock %}
