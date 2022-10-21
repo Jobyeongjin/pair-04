@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
+
 {% block content %}
-  <h1>movies/index.html</h1>
   
     {% load static %}
     <!-- static 경로에 변수를 사용하려면, get_static_prefix를 사용해야 함-->
@@ -12,11 +12,16 @@
           <div class="card h-100 ">
             <img src="{% get_static_prefix %}images/{{movie.id}}.jpg" alt="">
             <div class="card-body">
-               <p>{{ movie.id }}</p>
-               <p>{{ movie.title }}</p>
-               <p>{{ movie.vote_average }}</p>
-               <p>{{ movie.overview }}</p>
-              <a href="{% url 'review:index' movie.pk%}" class="btn btn-primary">Go somewhere</a>
+              <h3>{{ movie.title }}</h3>
+              <p>{{ movie.vote_average }} ⭐️</p>
+              
+              {% if movie.overview %}
+              <p style="color: gray;">{{ movie.overview }}</p>
+              {% else %}
+              <p style="color: gray;">정보가 없어요...</p>  
+              {% endif %}
+                
+              <a href="{% url 'review:index' movie.pk%}" class="btn btn-primary">리뷰쓰기 <i class="fa-solid fa-pen"></i></a>
             </div>
           </div>
         </div>
