@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseForbidden
 from .forms import ReviewForm
 from .models import Review
@@ -14,7 +15,7 @@ def index(request):
         },
     )
 
-
+@login_required
 def create(request):
     if request.method == "POST":
         form = ReviewForm(request.POST)
@@ -33,7 +34,7 @@ def create(request):
         },
     )
 
-
+@login_required
 def update(request, pk):
     review = Review.objects.get(pk=pk)
     if request.user == review.user:
@@ -50,3 +51,12 @@ def update(request, pk):
         })
     else:
         return HttpResponseForbidden()
+
+@login_required
+def delete(request, pk):
+    review = Review.objects.get(pk=pk)
+    if request.user == review.user:
+        review.delete()
+    else:
+        return HttpResponseForbidden()
+    return redirect('review:index')
