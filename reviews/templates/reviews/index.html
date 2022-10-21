@@ -17,7 +17,7 @@
     {% for review in reviews %}
     <tr>
       <td>{{ review.title }}</td>
-      <td><a href="{% url 'review:detail' review.pk %}">{{ review.content }}</a></td>
+      <td><a href="#">{{ review.content }}</a></td>
       <td>{{ review.movie_name }}</td>
     </tr>
     {% endfor %}
