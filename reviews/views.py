@@ -48,6 +48,7 @@ def update(request, pk):
             'form': form,
         })
     else:
+        from django.http import HttpResponseForbidden
         return HttpResponseForbidden()
 
 @login_required
@@ -56,6 +57,7 @@ def delete(request, pk):
     if request.user == review.user:
         review.delete()
     else:
+        from django.http import HttpResponseForbidden
         return HttpResponseForbidden()
     return redirect('review:index')
 

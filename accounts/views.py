@@ -9,12 +9,12 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm
 from django.contrib.auth import update_session_auth_hash
 
-def index(request):
+def main(request):
     users = get_user_model().objects.all()
     context = {
         "users": users
     }
-    return render(request, 'accounts/index.html', context)
+    return render(request, 'accounts/main.html', context)
 
 def signup(request):
     signup_form = CustomUserCreationForm()
@@ -23,7 +23,7 @@ def signup(request):
         if signup_form.is_valid():
             user = signup_form.save()
             auth_login(request, user)
-            return redirect('accounts:index')
+            return redirect('accounts:main')
 
     context = {
         "signup_form" : signup_form,
@@ -35,7 +35,7 @@ def login(request):
         form = AuthenticationForm(request, data=request.POST)
         if form.is_valid():
             auth_login(request, form.get_user())
-            return redirect(request.GET.get('next') or 'accounts:index')
+            return redirect(request.GET.get('next') or 'accounts:main')
     else:
         form = AuthenticationForm()
     return render(request, "accounts/login.html",
@@ -45,7 +45,7 @@ def login(request):
 @login_required
 def logout(request):
     auth_logout(request)
-    return redirect('accounts:index')
+    return redirect('accounts:main')
 
 @login_required
 def profile(request, user_pk):
@@ -87,4 +87,4 @@ def change_password(request, user_pk):
 def delete(request):
     request.user.delete()
     auth_logout(request)
-    return redirect('accounts:index')
+    return redirect('accounts:main')
