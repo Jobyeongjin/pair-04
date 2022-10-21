@@ -41,7 +41,7 @@ MEDIA_ROOT = BASE_DIR / 'images'
 MEDIA_URL = '/media/'
 
 INSTALLED_APPS = [
-    
+    'accounts',
     'django_bootstrap5',
     'django.contrib.admin',
     'django.contrib.auth',
