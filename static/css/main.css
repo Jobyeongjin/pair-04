@@ -1,6 +1,13 @@
+@import 'login.css';
+
 a {
   color: #000;
   text-decoration: none;
+}
+
+button {
+  border: none;
+  outline: none;
 }
 
 
