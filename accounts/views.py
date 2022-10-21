@@ -47,13 +47,52 @@ def logout(request):
     auth_logout(request)
     return redirect('accounts:main')
 
+from .models import Profile
+from .forms import ProfileForm
+
 @login_required
 def profile(request, user_pk):
     user = get_user_model().objects.get(pk = user_pk)
+    
+    try:
+        profile = Profile.objects.get(user = user)
+    except:
+        profile = 'profile 이 없습니다'
+    
     context = {
-        "user" : user
+        "user" : user,
+        "profile" : profile,
     }
     return render(request, 'accounts/profile.html', context)
+
+@login_required
+def create_profile(request, user_pk):
+    profile_form = ProfileForm()
+    if request.method == "POST":
+        profile_form = ProfileForm(request.POST, request.FILES)
+        if profile_form.is_valid():
+            profile = profile_form.save(commit=False)
+            profile.user = request.user
+            profile.save()
+            return redirect("accounts:profile", user_pk)
+    context = {
+        "profile_form" : profile_form,
+    }
+    return render(request, 'accounts/profile_create.html', context)
+
+@login_required
+def update_profile(request, profile_pk):
+    profile = Profile.objects.get(pk = profile_pk)
+    profile_form = ProfileForm(instance=profile)
+    if request.method == "POST":
+        profile_form = ProfileForm(request.POST, request.FILES, instance=profile)
+        if profile_form.is_valid():
+                profile_form.save()
+                return redirect('accounts:profile', profile_pk)
+    context = {
+        "profile_form" : profile_form,
+    }
+    return render(request, 'accounts/profile_create.html', context)
 
 @login_required
 def update(request, user_pk):
