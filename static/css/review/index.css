@@ -1,0 +1,77 @@
+
+.review-content {
+  margin-top: 100px;
+  display: flex;
+}
+
+/* Index-Nav */
+.index-nav {
+  width: 25%;
+  height: 100vh;
+}
+
+.index-icon li {
+  margin-bottom: 30px;
+}
+
+.index-icon li i {
+  margin-right: 15px;
+}
+
+.index-btn {
+  padding: 10px 60px;
+  border-radius: 50px;
+  font-weight: bold;
+  background-color: #1D9BEF;
+  color: #fff;
+  border: 1px solid #fff;
+  transition: all ease-in-out .3s;
+}
+
+.index-btn:hover {
+  background-color: #fff;
+  color: #000;
+  border: 1px solid #000;
+}
+
+.index-text {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+
+/* Index-Content */
+.index-content {
+  width: 50%;
+  height: 100vh;
+  border-left: 1px solid #e0dfdc;
+  border-right: 1px solid #e0dfdc;
+}
+
+.card-top {
+  display: flex;
+  justify-content: space-between;
+}
+
+.card-top i {
+  margin: 10px 10px 0 0;
+}
+
+
+.card-profile {
+  display: flex;
+}
+
+.card-icon {
+  height: 40px;
+}
+
+
+/* Index-Foryou */
+.index-foryou {
+  width: 25%;
+  height: 100vh;
+  margin-left: 20px;
+  background-color: #e0dfdc;
+  border-radius: 30px;
+}
