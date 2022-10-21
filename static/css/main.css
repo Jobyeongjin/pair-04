@@ -1,5 +1,6 @@
 @import 'login.css';
 @import 'review/index.css';
+@import 'review/detail.css';
 
 a {
   color: #000;
@@ -27,6 +28,17 @@ ul {
   padding-left: 0px;
 }
 
+input {
+  border: none;
+}
+
+input:focus,
+input:active,
+button:focus,
+button:active {
+  outline: none;
+  box-shadow: none;
+}
 
 /* Navbar */
 .nav-form input:last-child {
