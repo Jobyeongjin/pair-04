@@ -11,4 +11,5 @@ class ReviewForm(ModelForm):
             'content',
             'movie_name',
             'grade',
+            'image',
         )

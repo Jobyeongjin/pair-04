@@ -37,7 +37,7 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
-MEDIA_ROOT = BASE_DIR / "images"
+MEDIA_ROOT = BASE_DIR / "media"
 MEDIA_URL = "/media/"
 
 AUTH_USER_MODEL = "accounts.User"
@@ -138,3 +138,4 @@ STATIC_URL = "/static/"
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+

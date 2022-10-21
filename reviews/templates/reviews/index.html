@@ -10,6 +10,7 @@
       <th scope="col">title</th>
       <th scope="col">content</th>
       <th scope="col">movie_name</th>
+      <th scope="col">image</th>
     </tr>
   </thead>
   <tbody>
@@ -19,6 +20,10 @@
       <td>{{ review.title }}</td>
       <td><a href="#">{{ review.content }}</a></td>
       <td>{{ review.movie_name }}</td>
+      
+      {% if review.image %}
+      <td><img src="{{ review.image.url }}" alt="" width="100px" height="100px"></td>
+      {% endif %}
     </tr>
     {% endfor %}
       
