@@ -63,7 +63,14 @@ def delete(request, pk):
 
 
 def detail(request, review_pk):
-    return render(request, 'reviews/detail.html', )
+    review = Review.objects.get(pk = review_pk)
+    comment_form = CommentForm()
+    context = {
+        'review' : review,
+        'comments' : review.comment_set.all(),
+        'comment_form' : comment_form,
+    }
+    return render(request, 'reviews/detail.html', context )
 
 def create_comment(request, review_pk):
     review = Review.objects.get(pk = review_pk)
