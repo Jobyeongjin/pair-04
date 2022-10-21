@@ -23,6 +23,18 @@ class CommentForm(ModelForm):
             'user',
             'review',
         )
+        widgets = {
+            'content': forms.TextInput(
+                attrs={
+                    'class': 'form-control',
+                    'style': 'color: #000; margin: 0;',
+                    'placeholder':'댓글을 입력하세요.',
+                }
+            ),
+        }
+        labels = {
+            'content': '',
+        }
 
 # 검색 폼 > <input type="text" name="search_word" label="Search Word"> 과 유사
 class ReviewSearchForm(forms.Form):
