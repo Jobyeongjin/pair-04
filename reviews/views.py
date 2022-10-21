@@ -15,6 +15,7 @@ def index(request, movie_pk):
         "reviews/index.html",
         {
             "reviews": reviews,
+            "movie" : movie,
         },
     )
 
