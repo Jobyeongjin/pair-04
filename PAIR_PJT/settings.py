@@ -39,8 +39,10 @@ MEDIA_URL = "/media/"
 AUTH_USER_MODEL = "accounts.User"
 
 INSTALLED_APPS = [
+    "movies",
     "accounts",
     "reviews",
+    "django_extensions",
     "django_seed",
     "django_bootstrap5",
     "django.contrib.admin",

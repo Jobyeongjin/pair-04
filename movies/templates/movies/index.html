@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h1>movies/index.html</h1>
+  
+    {% load static %}
+    <!-- static 경로에 변수를 사용하려면, get_static_prefix를 사용해야 함-->
+    {% comment %} <p><img src="{% static 'images/{{ movie.id }}.jpg' %}" alt="{{movie.id}}"></p> {% endcomment %}
+    <div class="container">
+      <div class="row">
+        {% for movie in movies %}
+        <div class="col-4 my-2">
+          <div class="card h-100 ">
+            <img src="{% get_static_prefix %}images/{{movie.id}}.jpg" alt="">
+            <div class="card-body">
+               <p>{{ movie.id }}</p>
+               <p>{{ movie.title }}</p>
+               <p>{{ movie.vote_average }}</p>
+               <p>{{ movie.overview }}</p>
+              <a href="{% url 'review:index' movie.pk%}" class="btn btn-primary">Go somewhere</a>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+
+{% endblock content %}

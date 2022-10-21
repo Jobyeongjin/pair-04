@@ -13,8 +13,10 @@
     <div class="card-body">
       <h5 class="card-title">{{review.title}}</h5>
       <p class="card-text">{{review.content}}</p>
+      <a href="{% url 'review:update' review.movie.id review.pk %}">수정</a>
+      <a href="">삭제</a>
       <div>
-        <form action="{% url 'review:likes' review.pk %}" method='POST'>
+        <form action="{% url 'review:likes' review.movie.id review.pk %}" method='POST'>
           {% csrf_token %}
           {% if user in review.like_users.all %}
             <button class="btn btn-link text-danger">
@@ -36,7 +38,7 @@
 
   <div class="my-3 p-3 bg-body rounded shadow-sm">
     <h6 class="border-bottom pb-2 mb-0">댓글</h6>
-    <form action="{% url 'review:create_comment' review.pk%}" method="POST">
+    <form action="{% url 'review:create_comment' review.movie.id review.pk%}" method="POST">
       {% csrf_token %}
       {% bootstrap_form comment_form%}
       <input type="submit" class="btn btn-primary">
@@ -50,7 +52,7 @@
           <div class="d-flex justify-content-between">
             <strong class="text-gray-dark">{{comment.content}}</strong>
             {% if request.user == comment.user %}
-              <a href="{% url 'review:delete_comment' review.pk comment.pk%}">삭제</a>
+              <a href="{% url 'review:delete_comment' comment.review.movie.id review.pk comment.pk%}">삭제</a>
             {% endif %}
 
           </div>

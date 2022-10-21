@@ -19,12 +19,14 @@
         <tr>
           <td>{{ review.title }}</td>
           <td>
-            <a href="{% url 'review:detail' review.pk %}">{{ review.content }}</a>
+            <a href="{% url 'review:detail'  review.movie.id review.pk%}">{{ review.content }}</a>
           </td>
-          <td>{{ review.movie_name }}</td>
+          <td>{{ review.movie.title }}</td>
 
           {% if review.image %}
             <td><img src="{{ review.image.url }}" alt="" width="100px" height="100px"></td>
+          {% else %}
+            <td></td>
           {% endif %}
           <td>
             <span class="badge bg-secondary">{{ review.like_users.all|length}}</span>
