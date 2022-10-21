@@ -1,0 +1,54 @@
+.main-wrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -2;
+  width: 100%;
+}
+
+.login-back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: -1;
+  background-color: #000;
+  opacity: .5;
+}
+
+.login-wrap  {
+  width: 80%;
+  position: relative;
+}
+
+.login-wrap i {
+  position: absolute;
+  top: 20px;
+  left: 15px;
+}
+
+.login-form {
+  background-color: #fff;
+  padding: 50px 100px;
+  border-radius: 15px;
+}
+
+.login-form form {
+  width: 60%;
+  margin: auto;
+}
+
+.login-btn-in {
+  padding: 10px 148px;
+  border-radius: 50px;
+  color: #fff;
+  background-color: #000;
+  transition: all ease-in-out .3s;
+}
+
+.login-btn-in:hover {
+  color: #000;
+  background-color: #fff;
+  border: 1px solid #000;
+}
