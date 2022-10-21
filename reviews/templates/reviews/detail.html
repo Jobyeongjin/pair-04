@@ -5,28 +5,39 @@
 {% bootstrap_javascript %}
 
 {% block content %}
-{% include 'navbar.html' %}
-<div class="container review-content">
+  {% include 'navbar.html' %}
+  <div class="container review-content">
 
-  <!-- Index-Nav -->
-  <div class="index-nav d-flex flex-column">
-    <ul class="index-icon">
-      <li><i class="fa-solid fa-house fa-2x"></i><span class="index-text">홈</span></li>
-      <li><i class="fa-regular fa-user fa-2x"></i><span class="index-text">프로필</span></li>
-      <li><i class="fa-regular fa-comment-dots fa-2x"></i><span class="index-text">댓글</span></li>
-      <li><i class="fa-regular fa-bell fa-2x"></i><span class="index-text">알림</span></li>
-    </ul>
-    <a href="{% url 'review:create' %}"><button class="index-btn">리뷰작성</button></a>
-  </div>
+    <!-- Index-Nav -->
+    <div class="index-nav d-flex flex-column">
+      <ul class="index-icon">
+        <li>
+          <i class="fa-solid fa-house fa-2x"></i>
+          <span class="index-text">홈</span></li>
+        <li>
+          <i class="fa-regular fa-user fa-2x"></i>
+          <span class="index-text">프로필</span></li>
+        <li>
+          <i class="fa-regular fa-comment-dots fa-2x"></i>
+          <span class="index-text">댓글</span></li>
+        <li>
+          <i class="fa-regular fa-bell fa-2x"></i>
+          <span class="index-text">알림</span></li>
+      </ul>
+      <a href="{% url 'review:create' review.movie.id %}">
+        <button class="index-btn">리뷰작성</button>
+      </a>
+    </div>
 
-  <!-- Index-Content -->
-  <div class="index-content px-3">
-    <!-- Card-top -->
-    <div class="card-top">
-      <div class="card-profile">
-        <img src="{{ review.user.profile.image.url }}" alt="" width="55px" height="55px"
-          class="rounded-circle flex-shrink-0 mx-2">
-        {{ review.user }}
+    <!-- Index-Content -->
+    <div class="index-content px-3">
+      <!-- Card-top -->
+      <div class="card-top">
+        <div class="card-profile">
+          <img src="{{ review.user.profile.image.url }}" alt="" width="55px" height="55px" class="rounded-circle flex-shrink-0 mx-2">
+          {{ review.user }}
+        </div>
+        <i class="fa-solid fa-ellipsis fa-lg"></i>
       </div>
 
       <div class="dropdown text-center" style="width: 50px;">
@@ -53,7 +64,20 @@
     <hr style="margin: 0;">
     <div class="card-icon d-flex justify-content-around align-items-center">
       <i class="fa-regular fa-comment fa-lg"></i>
-      <i class="fa-regular fa-heart fa-lg"></i>
+      <!-- Like -->
+        <form action="{% url 'review:likes' review.movie.id review.pk %}" method='POST'>
+          {% csrf_token %}
+          {% if user in review.like_users.all %}
+            <button class="btn btn-link text-danger">
+              <i class="fa-solid fa-heart fa-lg"></i>
+            </button>
+          {% else %}
+            <button class="btn btn-link text-black">
+              <i class="fa-regular fa-heart fa-lg"></i>
+            </button>
+          {% endif %}
+        </form>
+        <!-- Like -->
       <i class="fa-solid fa-cloud-arrow-down fa-lg"></i>
     </div>
     <hr style="margin: 0;">
@@ -97,12 +121,12 @@
       {% endfor %}
     </div>
 
+    </div>
+
+    <!-- Index-Foryou -->
+    <div class="index-foryou"></div>
+
   </div>
-
-  <!-- Index-Foryou -->
-  <div class="index-foryou"></div>
-
-</div>
 {% endblock content %}
 
 

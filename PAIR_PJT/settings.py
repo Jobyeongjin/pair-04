@@ -39,6 +39,7 @@ MEDIA_URL = "/media/"
 AUTH_USER_MODEL = "accounts.User"
 
 INSTALLED_APPS = [
+    "movies",
     "accounts",
     "reviews",
     'widget_tweaks',

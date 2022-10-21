@@ -20,6 +20,7 @@ class CommentForm(ModelForm):
         model = Comment
         fields = '__all__'
         exclude = (
+            'movie',
             'user',
             'review',
         )
