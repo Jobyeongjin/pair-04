@@ -73,12 +73,12 @@ def create_comment(request, review_pk):
         comment.review = review
         comment.user = request.user
         comment.save()
-    return redirect('reviews:index')
+    return redirect('review:detail', review.pk)
 
 def delete_comment(request, review_pk, comment_pk):
     comment = Comment.objects.get(pk = comment_pk)
     review = Review.objects.get(pk = review_pk)
     if request.user == review.user:
         comment.delete()
-    return redirect('reviews:index')
+    return redirect('review:detail', review.pk)
 
