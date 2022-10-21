@@ -31,7 +31,9 @@
             <input name='search_word' type="search" class="form-control form-control-dark text-bg-dark" placeholder="Search..." aria-label="Search">
         </form>
         <div class="index-profile">
-          <a href="{% url 'accounts:profile' user.pk %}"><i class="fa-solid fa-gear fa-lg"></i></a>
+          <a href="{% url 'accounts:profile' user.pk %}">
+            <img src="{{ review.user.profile.image.url }}" alt="" width="45px" height="45px" class="rounded-circle flex-shrink-0 mx-2 border border-warning border-3">
+          </a>
           {% else %}
           <a href="{% url 'accounts:login' %}">로그인</a>
           <a href="{% url 'accounts:signup' %}">회원가입</a>
