@@ -3,6 +3,27 @@
 
 
 {% block content %}
-  index
+  
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">title</th>
+      <th scope="col">content</th>
+      <th scope="col">movie_name</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    {% for review in reviews %}
+    <tr>
+      <td>{{ review.title }}</td>
+      <td><a href="{% url 'review:detail' review.pk %}">{{ review.content }}</a></td>
+      <td>{{ review.movie_name }}</td>
+    </tr>
+    {% endfor %}
+      
+  </tbody>
+</table>
+
 {% endblock content %}
   
