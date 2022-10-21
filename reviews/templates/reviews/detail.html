@@ -4,43 +4,127 @@
 {% bootstrap_javascript %}
 
 {% block content %}
-  <div class="card">
-    <img src="..." class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">{{review.title}}</h5>
-      <p class="card-text">{{review.content}}</p>
-    </div>
+{% include 'navbar.html' %}
+
+<div class="container review-content">
+  <!-- Index-Nav -->
+  <div class="index-nav d-flex flex-column">
+    <ul class="index-icon">
+      <li><i class="fa-solid fa-house fa-2x"></i><span class="index-text">홈</span></li>
+      <li><i class="fa-regular fa-user fa-2x"></i><span class="index-text">프로필</span></li>
+      <li><i class="fa-regular fa-comment-dots fa-2x"></i><span class="index-text">댓글</span></li>
+      <li><i class="fa-regular fa-bell fa-2x"></i><span class="index-text">알림</span></li>
+    </ul>
+    <a href="{% url 'review:create' %}"><button class="index-btn">리뷰작성</button></a>
   </div>
 
-  <div class="my-3 p-3 bg-body rounded shadow-sm">
-    <h6 class="border-bottom pb-2 mb-0">댓글</h6>
-    <form action="{% url 'review:create_comment' review.pk%}" method="POST">
-      {% csrf_token %}
-      {% bootstrap_form comment_form%}
-      <input type="submit" class="btn btn-primary">
-    </form>
-
-    {% for comment in comments %}
-      <div class="d-flex text-muted pt-3">
-
-        <svg class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32" preserveaspectratio="xMidYMid slice" focusable="false">
-          <title>Placeholder</title>
-          <rect width="100%" height="100%" fill="#007bff"></rect>
-          <text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text>
-        </svg>
-
-        <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
-          <div class="d-flex justify-content-between">
-            <strong class="text-gray-dark">{{comment.content}}</strong>
-            {% if request.user == comment.user %}
-              <a href="{% url 'review:delete_comment' review.pk comment.pk%}">삭제</a>
-            {% endif %}
-
-          </div>
-          <span class="d-block">@{{comment.user.username}}</span>
-        </div>
+  <!-- Index-Content -->
+  <div class="index-content px-3">
+    <!-- Card-top -->
+    <div class="card-top">
+      <div class="card-profile">
+        <img src="{{ review.user.profile.image.url }}" alt="" width="55px" height="55px"
+          class="rounded-circle flex-shrink-0 mx-2">
+        {{ review.user }}
       </div>
-    {% endfor %}
+      <i class="fa-solid fa-ellipsis fa-lg"></i>
+    </div>
+    <p class="my-3">{{ review.title }}</p>
+    <!-- Card-img -->
+    {% if review.image %}
+    <div class="card-img mt-3">
+      <img src="{{ review.image.url }}" alt="" width="100%" height="100%" style="border-radius: 20px;">
+    </div>
+    {% endif %}
+    <p class="my-3">{{ review.title }}</p>
+    <div class="d-flex justify-content-end">
+      <p class="" style="opacity: .3; font-size: 14px;">{{ review.updated_at }}</p>
+    </div>
+    <!-- Card-icon -->
+    <hr style="margin: 0;">
+    <div class="card-icon d-flex justify-content-around align-items-center">
+      <i class="fa-regular fa-comment fa-lg"></i>
+      <i class="fa-regular fa-heart fa-lg"></i>
+      <i class="fa-solid fa-cloud-arrow-down fa-lg"></i>
+    </div>
+    <hr style="margin: 0;">
+
+    <!-- Comment -->
+    <div class="p-3">
+      <h6 class="border-bottom pb-2 mb-0">댓글</h6>
+      <form class="comment-form" action="{% url 'review:create_comment' review.pk %}" method="POST">
+        {% csrf_token %}
+        <input type="text">
+        <input type="submit" class="">
+      </form>
+    
+      {% for comment in comments %}
+        <div class="d-flex text-muted pt-3">
+    
+          <svg class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32" preserveaspectratio="xMidYMid slice" focusable="false">
+            <title>Placeholder</title>
+            <rect width="100%" height="100%" fill="#007bff"></rect>
+            <text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text>
+          </svg>
+    
+          <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
+            <div class="d-flex justify-content-between">
+              <strong class="text-gray-dark">{{comment.content}}</strong>
+              {% if request.user == comment.user %}
+                <a href="{% url 'review:delete_comment' review.pk comment.pk%}">삭제</a>
+              {% endif %}
+    
+            </div>
+            <span class="d-block">@{{comment.user.username}}</span>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
   </div>
+
+  <!-- Index-Foryou -->
+  <div class="index-foryou"></div>
+</div>
 
 {% endblock content %}
+
+<div class="card">
+  <img src="..." class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">{{review.title}}</h5>
+    <p class="card-text">{{review.content}}</p>
+  </div>
+</div>
+
+<div class="my-3 p-3 bg-body rounded shadow-sm">
+  <h6 class="border-bottom pb-2 mb-0">댓글</h6>
+  <form action="{% url 'review:create_comment' review.pk%}" method="POST">
+    {% csrf_token %}
+    {% bootstrap_form comment_form%}
+    <input type="submit" class="btn btn-primary">
+  </form>
+
+  {% for comment in comments %}
+  <div class="d-flex text-muted pt-3">
+
+    <svg class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg"
+      role="img" aria-label="Placeholder: 32x32" preserveaspectratio="xMidYMid slice" focusable="false">
+      <title>Placeholder</title>
+      <rect width="100%" height="100%" fill="#007bff"></rect>
+      <text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text>
+    </svg>
+
+    <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
+      <div class="d-flex justify-content-between">
+        <strong class="text-gray-dark">{{comment.content}}</strong>
+        {% if request.user == comment.user %}
+        <a href="{% url 'review:delete_comment' review.pk comment.pk%}">삭제</a>
+        {% endif %}
+
+      </div>
+      <span class="d-block">@{{comment.user.username}}</span>
+    </div>
+  </div>
+  {% endfor %}
+</div>
