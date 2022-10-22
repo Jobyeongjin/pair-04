@@ -1,21 +1,117 @@
 {% extends 'base.html' %}
-
 {% load django_bootstrap5 %}
 
 {% block content %}
-  <div class="container">
-    <h1>accounts:update.html</h1>
 
-    <form action="" method="POST">
-      {% csrf_token %}
-      {% bootstrap_form update_form %}
-      <div class="d-grid">
-        <input type="submit" class="btn btn-primary">
+<!-- Update-Form -->
+<div class="update-form">
+  <div class="container d-flex flex-column align-items-center justify-content-center" style="height: 100vh;">
+    <div class="login-wrap">
+      <a href="{% url 'accounts:profile' user.pk %}"><i class="fa-sharp fa-solid fa-xmark fa-lg"></i></a>
+      <div class="login-form">
+        <div class="d-flex justify-content-center update-top">
+          <h3>회원정보 수정</h3>
+          <div class="update-icon">
+            <a href="{% url 'accounts:change_password' user.pk %}"><i class="fa-solid fa-lock-open fa-lg"></i></a>
+            <a href="{% url 'accounts:delete' %}"><i class="fa-regular fa-trash-can fa-lg"></i></a>
+          </div>
+        </div>
+        <form action="" method="post">
+          {% csrf_token %}
+          {% bootstrap_form update_form %}
+          <div class="d-flex justify-content-center">
+            <button class="login-btn-in" type="submit">저장</button>
+          </div>
+        </form>
       </div>
-
-    </form>
+    </div>
   </div>
-  <a href="{% url 'accounts:change_password' user.pk %}" class="card-link btn btn-info">비밀번호 변경</a>
-  <a href="{% url 'accounts:delete' %}" class="card-link btn btn-danger">회원탈퇴</a>
+</div>
+
+<div class="update-back"></div>
+
+<!-- Index-wrap -->
+<div class="index-wrap">
+  <!-- Index -->
+  <div class="container review-content">
+    <!-- Index-Nav -->
+    <div class="index-nav d-flex flex-column">
+      <ul class="index-icon">
+        <li>
+          <a href="{% url 'movies:index' %}">
+            <i class="fa-solid fa-house fa-2x"></i>
+            <span class="index-text">홈</span>
+          </a>
+        </li>
+        <li>
+          <a href="{% url 'accounts:profile' user.pk %}">
+            <i class="fa-regular fa-user fa-2x"></i>
+            <span class="index-text">프로필</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="fa-regular fa-comment-dots fa-2x"></i>
+            <span class="index-text">댓글</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <div class="dot-wrap">
+              <i class="fa-regular fa-bell fa-2x"></i>
+              <div class="dot"></div>
+            </div>
+            <span class="index-text">알림</span>
+          </a>
+        </li>
+      </ul>
+      <a href="{% url 'accounts:logout' %}">
+        <button class="profile-btn">로그아웃</button>
+      </a>
+    </div>
+
+    <!-- Index-Content -->
+    <!-- Profile -->
+    <div class="index-content">
+      <div class="profile">
+        <div class="profile-top">
+          <img src="{{ profile.image.url }}" alt="">
+        </div>
+        <div class="profile-content">
+          <div class="profile-img">
+            <div class="">
+              {% if profile.image %}
+              <a href="{% url 'accounts:update_profile' profile.pk %}">
+                <img src="{{ profile.image.url }}" alt="" width="100px" height="100px"
+                  class="rounded-circle flex-shrink-0">
+              </a>
+              {% else %}
+              <a class="justify-content-start" href="{% url 'accounts:create_profile' user.pk%}">
+                프로필 작성
+              </a>
+              {% endif %}
+            </div>
+            <div class="profile-edit">
+              <a href="{% url 'accounts:update' user.pk %}" class=""><i class="fa-solid fa-pen fa-lg"></i></a>
+            </div>
+          </div>
+          <div class="profile-text">
+            <h4 class="mb-3">
+              {{ user.first_name }}
+              {{ user.last_name }}
+              <span class="opacity-50">@{{ user }}</span>
+            </h4>
+            <p class="mb-0 opacity-75">{{ profile.bio }}</p>
+          </div>
+        </div>
+      </div>
+      <hr>
+    </div>
+
+
+    <!-- Index-Foryou -->
+    <div class="index-foryou"></div>
+  </div>
+</div>
 
 {% endblock content %}

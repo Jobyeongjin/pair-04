@@ -103,7 +103,7 @@ def delete_comment(request, movie_pk, review_pk, comment_pk):
     movie = Movie.objects.get(pk = movie_pk)
     comment = Comment.objects.get(pk = comment_pk)
     review = Review.objects.get(pk = review_pk)
-    if request.user == review.user:
+    if request.user == comment.user:
         comment.delete()
     return redirect('review:detail', movie_pk, review.pk)
 

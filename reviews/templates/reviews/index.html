@@ -48,30 +48,67 @@
         <div class="card-top px-3">
           <div class="card-profile d-flex flex-column">
             <div class="mb-2">
-              <img src="{{ review.user.profile.image.url }}" alt="" width="55px" height="55px" class="rounded-circle flex-shrink-0 mx-2">
+              {% if review.user.profile.image %}
+                <img src="{{ review.user.profile.image.url }}" alt="" width="55px" height="55px" class="rounded-circle flex-shrink-0 mx-2">
+              {% else %}
+                <svg class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="50" height="50"
+                  xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32"
+                  preserveaspectratio="xMidYMid slice" focusable="false">
+                  <title>Placeholder</title>
+                  <rect width="100%" height="100%" fill="#007bff"></rect>
+                  <text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text>
+                </svg>
+              {% endif %}
               {{ review.user }}
             </div>
             <div class="badge bg-info">
               {{ review.get_date}}
             </div>
           </div>
-          <i class="fa-solid fa-ellipsis fa-lg"></i>
+          
+          {% if request.user == review.user %}
+          <div class="dropdown text-center" style="width: 50px;">
+            <span class="dropbtn"><i class="fa-solid fa-ellipsis fa-lg"></i></span>
+            <div class="dropdown-content">
+              <a href="{% url 'review:update' review.movie.id review.pk %}" class="text-center"><i
+                  class="fa-solid fa-pen fa-lg"></i></a>
+              <a href="{% url 'review:delete' review.movie.id review.pk %}"><i class="fa-regular fa-trash-can fa-lg"></i></a>
+            </div>
+          </div>
+          {% else %}
+          <span class="dropbtn"><i class="fa-solid fa-ellipsis fa-lg"></i></span>
+          {% endif %}
+            
         </div>
         <a href="{% url 'review:detail' movie.id review.pk %}">
           <p class="my-3 px-3">{{ review.title }}</p>
           {% if review.image %}
-            <div class="card-img mt-3 px-3">
+            <div class="card-img my-3 px-3">
               <img src="{{ review.image.url }}" alt="" width="100%" height="100%" style="border-radius: 20px;">
             </div>
           {% endif %}
         </a>
         <div class="card-icon d-flex justify-content-around align-items-center">
-          <i class="fa-regular fa-comment fa-lg">
-            {{ review.comment_set.all|length }}
-          </i>
-          <i class="fa-regular fa-heart fa-lg">
-            {{ review.like_users.all|length }}
-          </i>
+          <div class="comment-count">
+            {% if review.comment_set.all %}
+              <i class="fa-regular fa-comment fa-lg text-primary"></i>
+              <div class="comment-count-num">
+                {{ review.comment_set.all|length }}
+              </div>
+            {% else %}
+              <i class="fa-regular fa-comment fa-lg"></i>
+            {% endif %}
+          </div>
+          <div class="comment-count">
+            {% if review.like_users.all %}
+              <i class="fa-regular fa-heart fa-lg text-danger"></i>
+              <div class="like-count-num">
+                {{ review.like_users.all|length }}
+              </div>
+            {% else %}
+              <i class="fa-regular fa-heart fa-lg"></i>
+            {% endif %}
+          </div>
           <i class="fa-solid fa-cloud-arrow-down fa-lg"></i>
         </div>
 
