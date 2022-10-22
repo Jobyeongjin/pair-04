@@ -1,6 +1,7 @@
 @import 'login.css';
 @import 'review/index.css';
 @import 'review/detail.css';
+@import 'accounts/profile.css';
 
 a {
   color: #000;
@@ -81,25 +82,25 @@ button:active {
 .login-btn a {
   padding: 10px 120px;
   border-radius: 50px;
-  border: 1px solid #000;
-  color: #000;
+  background-color: #1D9BEF;
+  color: #fff;
+  opacity: .5;
   transition: all ease-in-out .3s;
 }
 
 .login-btn a:hover {
-  background-color: #000;
-  color: #fff;
+  opacity: 1;
 }
 
 .signup-btn a {
   padding: 10px 113px;
-  border: 1px solid #000;
   border-radius: 50px;
   background-color: #1D9BEF;
   color: #fff;
+  opacity: .5;
   transition: all ease-in-out .3s;
 }
 
 .signup-btn a:hover {
-  background-color: #000;
+  opacity: 1;
 }

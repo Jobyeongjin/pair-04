@@ -11,7 +11,19 @@
 }
 
 .index-icon li {
-  margin-bottom: 30px;
+  margin-bottom: 15px;
+  padding: 10px 15px;
+  border-radius: 30px;
+}
+
+.index-icon li:hover {
+  background-color: #e0dfdc;
+  width: 180px;
+}
+
+.index-icon li a {
+  display: flex;
+  align-items: center;
 }
 
 .index-icon li i {
@@ -26,12 +38,11 @@
   color: #fff;
   border: 1px solid #fff;
   transition: all ease-in-out .3s;
+  opacity: .8;
 }
 
 .index-btn:hover {
-  background-color: #fff;
-  color: #000;
-  border: 1px solid #000;
+  opacity: 1;
 }
 
 .index-text {
@@ -39,13 +50,31 @@
   font-weight: bold;
 }
 
+.dot-wrap {
+  position: relative;
+  display: inline-block;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  background-color: #1D9BEF;
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  right: 8px;
+}
 
 /* Index-Content */
 .index-content {
   width: 50%;
-  height: 100vh;
+  height: 100%;
   border-left: 1px solid #e0dfdc;
   border-right: 1px solid #e0dfdc;
+}
+
+.badge {
+  width: 80px;
 }
 
 .card-top {
@@ -66,6 +95,9 @@
   height: 40px;
 }
 
+.fa-ellipsis {
+  cursor: pointer;
+}
 
 /* Index-Foryou */
 .index-foryou {
