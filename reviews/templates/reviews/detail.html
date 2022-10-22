@@ -12,23 +12,34 @@
   <div class="index-nav d-flex flex-column">
     <ul class="index-icon">
       <li>
-        <i class="fa-solid fa-house fa-2x"></i>
-        <span class="index-text">홈</span>
+        <a href="{% url 'movies:index' %}">
+          <i class="fa-solid fa-house fa-2x"></i>
+          <span class="index-text">홈</span>
+        </a>
+        </li>
+      <li>
+        <a href="{% url 'accounts:profile' user.pk %}">
+          <i class="fa-regular fa-user fa-2x"></i>
+          <span class="index-text">프로필</span>
+        </a>
       </li>
       <li>
-        <i class="fa-regular fa-user fa-2x"></i>
-        <span class="index-text">프로필</span>
+        <a href="#">
+          <i class="fa-regular fa-comment-dots fa-2x"></i>
+          <span class="index-text">댓글</span>
+        </a>
       </li>
       <li>
-        <i class="fa-regular fa-comment-dots fa-2x"></i>
-        <span class="index-text">댓글</span>
-      </li>
-      <li>
-        <i class="fa-regular fa-bell fa-2x"></i>
-        <span class="index-text">알림</span>
+        <a href="#">
+          <div class="dot-wrap">
+            <i class="fa-regular fa-bell fa-2x"></i>
+            <div class="dot"></div>
+          </div>
+          <span class="index-text">알림</span>
+        </a>
       </li>
     </ul>
-    <a href="{% url 'review:create' review.movie.id %}">
+    <a href="#">
       <button class="index-btn">리뷰작성</button>
     </a>
   </div>
@@ -42,14 +53,18 @@
           class="rounded-circle flex-shrink-0 mx-2">
         {{ review.user }}
       </div>
-      <div class="dropdown text-center" style="width: 50px;">
-        <span class="dropbtn"><i class="fa-solid fa-ellipsis fa-lg"></i></span>
-        <div class="dropdown-content">
-          <a href="{% url 'review:update' review.movie.id review.pk %}" class="text-center"><i
-              class="fa-solid fa-pen fa-lg"></i></a>
-          <a href="{% url 'review:delete' review.movie.id review.pk %}"><i class="fa-regular fa-trash-can fa-lg"></i></a>
+      {% if request.user == review.user %}
+        <div class="dropdown text-center" style="width: 50px;">
+          <span class="dropbtn"><i class="fa-solid fa-ellipsis fa-lg"></i></span>
+          <div class="dropdown-content">
+            <a href="{% url 'review:update' review.movie.id review.pk %}" class="text-center"><i
+                class="fa-solid fa-pen fa-lg"></i></a>
+            <a href="{% url 'review:delete' review.movie.id review.pk %}"><i class="fa-regular fa-trash-can fa-lg"></i></a>
+          </div>
         </div>
-      </div>
+      {% else %}
+        <span class="dropbtn"><i class="fa-solid fa-ellipsis fa-lg"></i></span>
+      {% endif %}
     </div>
     <p class="my-3">{{ review.title }}</p>
     <!-- Card-img -->
@@ -65,7 +80,16 @@
     <!-- Card-icon -->
     <hr style="margin: 0;">
     <div class="card-icon d-flex justify-content-around align-items-center">
-      <i class="fa-regular fa-comment fa-lg"></i>
+      <div class="comment-count">
+        {% if review.comment_set.all %}
+          <i class="fa-regular fa-comment fa-lg text-primary"></i>
+          <div class="comment-count-num">
+            {{ review.comment_set.all|length }}
+          </div>
+        {% else %}
+          <i class="fa-regular fa-comment fa-lg"></i>
+        {% endif %}
+      </div>
       <!-- Like -->
       <form action="{% url 'review:likes' review.movie.id review.pk %}" method='POST'>
         {% csrf_token %}
@@ -79,7 +103,7 @@
         </button>
         {% endif %}
       </form>
-      <!-- Like -->
+      
       <i class="fa-solid fa-cloud-arrow-down fa-lg"></i>
     </div>
     <hr style="margin: 0;">
@@ -87,8 +111,20 @@
     <!-- Comment -->
     <div class="p-3">
       <div class="d-flex align-items-center justify-content-between">
-        <img src="{{ review.user.profile.image.url }}" alt="" width="45px" height="45px"
-          class="rounded-circle flex-shrink-0 mx-2">
+        
+        {% if request.user.profile.image %}
+          <img src="{{ request.user.profile.image.url }}" alt="" width="45px" height="45px"
+            class="rounded-circle flex-shrink-0 mx-2">
+        {% else %}
+          <svg class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32"
+            xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32"
+            preserveaspectratio="xMidYMid slice" focusable="false">
+            <title>Placeholder</title>
+            <rect width="100%" height="100%" fill="#007bff"></rect>
+            <text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text>
+          </svg>
+        {% endif %}
+          
         <form class="comment-form d-flex" action="{% url 'review:create_comment' review.movie.id review.pk %}"
           method="POST">
           {% csrf_token %}
@@ -99,30 +135,35 @@
           </div>
         </form>
       </div>
+      <hr>
   
       {% for comment in comments %}
-      <div class="d-flex text-muted pt-3">
-  
-        <svg class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32"
-          xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32"
-          preserveaspectratio="xMidYMid slice" focusable="false">
-          <title>Placeholder</title>
-          <rect width="100%" height="100%" fill="#007bff"></rect>
-          <text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text>
-        </svg>
-  
-        <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
+      <div class="d-flex align-items-center mt-3">
+        
+        {% if comment.user.profile.image %}
+          <img src="{{ comment.user.profile.image.url }}" alt="" width="40px" height="40px"
+          class="rounded-circle flex-shrink-0 mx-2">
+        {% else %}
+          <svg class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32"
+            xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32"
+            preserveaspectratio="xMidYMid slice" focusable="false">
+            <title>Placeholder</title>
+            <rect width="100%" height="100%" fill="#007bff"></rect>
+            <text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text>
+          </svg>
+        {% endif %}
+          
+        <div class="small lh-sm w-100">
+          <span class="d-block text-muted">@{{comment.user.username}}</span>
           <div class="d-flex justify-content-between">
-            <strong class="text-gray-dark">{{comment.content}}</strong>
-  
+            <p class="text-gray-dark m-0">{{comment.content}}</p>
           </div>
-          <span class="d-block">@{{comment.user.username}}</span>
         </div>
         {% if request.user == comment.user %}
-        <a href="{% url 'review:delete_comment' review.movie.id review.pk comment.pk %}">삭제</a>
+        <a href="{% url 'review:delete_comment' review.movie.id review.pk comment.pk %}"><i class="fa-regular fa-trash-can fa-lg"></i></a>
         {% endif %}
-        
       </div>
+      <hr>
       {% endfor %}
     </div>
   </div>

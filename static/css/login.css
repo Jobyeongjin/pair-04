@@ -40,15 +40,15 @@
 }
 
 .login-btn-in {
-  padding: 10px 148px;
+  width: 100%;
+  padding: 10px;
   border-radius: 50px;
   color: #fff;
-  background-color: #000;
+  background-color: #1D9BEF;
+  opacity: .5;
   transition: all ease-in-out .3s;
 }
 
 .login-btn-in:hover {
-  color: #000;
-  background-color: #fff;
-  border: 1px solid #000;
+  opacity: 1;
 }
