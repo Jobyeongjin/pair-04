@@ -15,5 +15,7 @@
 
     </form>
   </div>
+  <a href="{% url 'accounts:change_password' user.pk %}" class="card-link btn btn-info">비밀번호 변경</a>
+  <a href="{% url 'accounts:delete' %}" class="card-link btn btn-danger">회원탈퇴</a>
 
 {% endblock content %}
