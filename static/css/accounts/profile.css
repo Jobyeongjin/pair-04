@@ -4,6 +4,15 @@
   height: 200px;
   background-color: bisque;
   overflow: hidden;
+  position: relative;
+}
+
+.profile-top img {
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .profile-img {
