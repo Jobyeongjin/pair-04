@@ -89,10 +89,11 @@ def create_profile(request, user_pk):
 
 @login_required
 def update_profile(request, profile_pk):
+
     profile = Profile.objects.get(pk = profile_pk)
     profile_form = ProfileForm(instance=profile)
     if request.method == "POST":
-        profile_form = ProfileForm(request.POST, request.FILES, instance=profile)
+        profile_form = ProfileForm(request.POST or None, request.FILES or None, instance=profile)
         if profile_form.is_valid():
                 profile_form.save()
                 return redirect('accounts:profile', profile_pk)
