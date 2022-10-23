@@ -51,99 +51,136 @@
           {% if profile.background_image %}
             <div style="background-image: URL({{ profile.background_image.url }}); background-repeat: no-repeat; background-size : cover;" class="profile-top"></div>
           {% else %}
-            <div class="profile top"></div>
+            <div class="profile-top"></div>
           {% endif %}
         </div>
         <div class="profile-content">
           <div class="profile-img">
             <div class="">
-              {% if profile.image %}
-                <a href="{% url 'accounts:update_profile' profile.pk %}">
-                  <img src="{{ profile.image.url }}" alt="" width="100px" height="100px" class="rounded-circle flex-shrink-0">
+              {% if profile.user_id %}
+                {% if profile.image %}
+                  <a href="{% url 'accounts:update_profile' profile.pk %}">
+                    <img src="{{ profile.image.url }}" alt="" width="100px" height="100px" class="rounded-circle flex-shrink-0">
+                  </a>
+                {% else %}
+                  <a class="justify-content-start" href="{% url 'accounts:update_profile' user.pk%}">
+                    <svg class="bd-placeholder-img flex-shrink-0 me-2 rounded-circle" width="55" height="55" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32" preserveaspectratio="xMidYMid slice" focusable="false">
+                      <title>Placeholder</title>
+                      <rect width="100%" height="100%" fill="#007bff"></rect>
+                      <text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text>
+                    </svg>
+                  {% endif %}
+                {% else %}
+                  <a class="justify-content-start" href="{% url 'accounts:create_profile' user.pk%}">
+                    프로필 작성
+                  </a>
+                {% endif %}
+              </div>
+              <div class="profile-edit">
+                <a href="{% url 'accounts:update' user.pk %}" class="">
+                  <i class="fa-solid fa-pen fa-lg"></i>
                 </a>
-              {% else %}
-                <a class="justify-content-start" href="{% url 'accounts:create_profile' user.pk%}">
-                  프로필 작성
-                </a>
-              {% endif %}
+              </div>
             </div>
-            <div class="profile-edit">
-              <a href="{% url 'accounts:update' user.pk %}" class="">
-                <i class="fa-solid fa-pen fa-lg"></i>
-              </a>
+            <div class="profile-text">
+              <h4 class="mb-3">
+                {{ user.first_name }}
+                {{ user.last_name }}
+                <span class="opacity-50">@{{ user }}</span>
+              </h4>
+              <p class="mb-0 opacity-75">{{ profile.bio }}</p>
             </div>
-          </div>
-          <div class="profile-text">
-            <h4 class="mb-3">
-              {{ user.first_name }}
-              {{ user.last_name }}
-              <span class="opacity-50">@{{ user }}</span>
-            </h4>
-            <p class="mb-0 opacity-75">{{ profile.bio }}</p>
           </div>
         </div>
-      </div>
-      <hr>
-      <div class="card p-3">
-        {% for review in reviews %}
-          <div class="card-profile d-flex flex-column">
-            <div class="mb-2">
-              {% if review.user.profile.image %}
-                <img src="{{ review.user.profile.image.url }}" alt="" width="55px" height="55px" class="rounded-circle flex-shrink-0 mx-2">
-              {% else %}
-                <svg class="bd-placeholder-img flex-shrink-0 me-2 rounded-circle" width="50" height="50" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32" preserveaspectratio="xMidYMid slice" focusable="false">
-                  <title>Placeholder</title>
-                  <rect width="100%" height="100%" fill="#007bff"></rect>
-                  <text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text>
-                </svg>
-              {% endif %}
-              {{ review.user }}
+        <hr>
+        <div class="card p-3">
+
+          {% for review in reviews %}
+            <div class="card-profile d-flex flex-column">
+              <div class="mb-2">
+                {% if review.user.profile.image %}
+                  <img src="{{ review.user.profile.image.url }}" alt="" width="55px" height="55px" class="rounded-circle flex-shrink-0 mx-2">
+                {% else %}
+                  <svg class="bd-placeholder-img flex-shrink-0 me-2 rounded-circle" width="50" height="50" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32" preserveaspectratio="xMidYMid slice" focusable="false">
+                    <title>Placeholder</title>
+                    <rect width="100%" height="100%" fill="#007bff"></rect>
+                    <text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text>
+                  </svg>
+                {% endif %}
+                {{ review.user }}
+              </div>
+              <div class="badge bg-info">
+                {{ review.get_date}}
+              </div>
+              <div class="container my-3">
+                <h1>#{{ review.title }}</h1>
+                <h5>{{ review.content }}</h5>
+              </div>
             </div>
-            <div class="badge bg-info">
-              {{ review.get_date}}
+            <div class="card-icon d-flex justify-content-around align-items-center">
+              <div class="comment-count">
+                {% if review.comment_set.all %}
+                  <i class="fa-regular fa-comment fa-lg text-primary"></i>
+                  <div class="comment-count-num">
+                    {{ review.comment_set.all|length }}
+                  </div>
+                {% else %}
+                  <i class="fa-regular fa-comment fa-lg"></i>
+                {% endif %}
+              </div>
+              <div class="comment-count">
+                {% if review.like_users.all %}
+                  <i class="fa-regular fa-heart fa-lg text-danger"></i>
+                  <div class="like-count-num">
+                    {{ review.like_users.all|length }}
+                  </div>
+                {% else %}
+                  <i class="fa-regular fa-heart fa-lg"></i>
+                {% endif %}
+              </div>
+              <i class="fa-solid fa-cloud-arrow-down fa-lg"></i>
             </div>
-            <div class="container my-3">
-              <h1>#{{ review.title }}</h1>
-              <h5>{{ review.content }}</h5>
-            </div>
-          </div>
-          <hr>
-        {% endfor %}
+            <hr>
+          {% endfor %}
+        </div>
+
       </div>
 
+      <!-- Index-Foryou -->
+      <div class="index-foryou">
+        <div class="container py-2">
+          <h4 class="m-2 badge bg-success">내가 쓴 글</h4>
+          {% for review in reviews %}
+            <div class="card mb-3 flex-row">
+              <img src="{% get_static_prefix %}images/{{review.movie.id}}.jpg" class="card-img-top w-25" alt="...">
+              <div class="card-body">
+                <h4 class="card-title">{{ review.title }}
+                </h4>
+                <i class="fa-regular fa-heart fa-lg text-danger">
+                  {{ review.like_users.all|length }}</i>
+                <span class="badge bg-primary">{{ review.get_date}}</span>
+                <p class="card-text">{{ review.content }}</p>
+              </div>
+            </div>
+          {% endfor %}
+
+          <h4 class="m-2 badge bg-secondary">내가 쓴 댓글</h4>
+          {% for comment in comments %}
+            <div class="card my-2">
+              <div class="card-title bg-light">
+                <h5>"{{ comment.review.movie.title }}" -
+                  {{ comment.review.title }}</h4>
+              </div>
+              <div class="card-body">
+                <p class="card-text">
+                  {{ comment.review.content  }}
+                </p>
+              </div>
+
+            </div>
+          {% endfor %}
+        </div>
+      </div>
     </div>
 
-    <!-- Index-Foryou -->
-    <div class="index-foryou">
-      <div class="container py-2">
-        <h4 class="m-2 badge bg-success">내가 쓴 글</h4>
-        {% for review in reviews %}
-          <div class="card mb-3 flex-row">
-            <img src="{% get_static_prefix %}images/{{review.movie.id}}.jpg" class="card-img-top w-25" alt="...">
-            <div class="card-body">
-              <h4 class="card-title">{{ review.title }}</h4>
-              <p class="card-text">{{ review.content }}</p>
-            </div>
-          </div>
-        {% endfor %}
-
-        <h4 class="m-2 badge bg-secondary">내가 쓴 댓글</h4>
-        {% for comment in comments %}
-          <div class="card my-2">
-            <div class="card-title bg-light">
-              <h5>"{{ comment.review.movie.title }}" -
-                {{ comment.review.title }}</h4>
-            </div>
-            <div class="card-body">
-              <p class="card-text">
-                {{ comment.review.content  }}
-              </p>
-            </div>
-
-          </div>
-        {% endfor %}
-      </div>
-    </div>
-  </div>
-
-{% endblock content %}
+  {% endblock content %}
