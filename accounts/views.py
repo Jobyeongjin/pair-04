@@ -99,6 +99,7 @@ def update_profile(request, profile_pk):
 @login_required
 def update(request, user_pk):
     user = get_user_model().objects.get(pk=user_pk)
+    profile = Profile.objects.get(user=user)
     update_form = CustomUserChangeForm(instance=request.user)
     if request.method == "POST":
         update_form = CustomUserChangeForm(request.POST, instance=request.user)
@@ -107,6 +108,7 @@ def update(request, user_pk):
             return redirect('accounts:profile', user_pk)
     context = {
         "update_form" : update_form,
+        'profile': profile,
     }
     return render(request, 'accounts/update.html', context)
 
