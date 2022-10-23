@@ -17,6 +17,10 @@ button {
   outline: none;
 }
 
+hr {
+  margin-bottom: 0;
+}
+
 nav {
   position: fixed;
   top: 0;

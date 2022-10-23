@@ -39,12 +39,14 @@ def create(request, movie_pk):
         "reviews/create.html",
         {
             "form": form,
+            'movie': movie,
         },
     )
 
 @login_required
 def update(request, movie_pk, review_pk):
     review = Review.objects.get(pk=review_pk)
+    movie = Movie.objects.get(pk=movie_pk)
     if request.user == review.user:
         if request.method == 'POST':
             form = ReviewForm(request.POST, request.FILES, instance=review)
@@ -56,6 +58,7 @@ def update(request, movie_pk, review_pk):
         return render(request, 'reviews/update.html',
         {
             'form': form,
+            'movie': movie,
         })
     else:
         from django.http import HttpResponseForbidden
@@ -83,6 +86,7 @@ def detail(request, review_pk, movie_pk):
         'comments' : review.comment_set.all().filter(movie=movie_pk),
         # 'comments' : review.comment_set.all(),
         'comment_form' : comment_form,
+        'movie': movie,
     }
     print(type(review.comment_set.all()), review.comment_set.all())
     return render(request, 'reviews/detail.html', context )

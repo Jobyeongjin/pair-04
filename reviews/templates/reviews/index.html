@@ -47,9 +47,13 @@
 
         <div class="card-top px-3">
           <div class="card-profile d-flex flex-column">
-            <div class="mb-2">
+            <div class="mb-2 mt-3">
               {% if review.user.profile.image %}
-                <img src="{{ review.user.profile.image.url }}" alt="" width="55px" height="55px" class="rounded-circle flex-shrink-0 mx-2">
+                {% if review.user == request.user %}
+                <a href="{% url 'accounts:profile' user.pk %}"><img src="{{ review.user.profile.image.url }}" alt="" width="55px" height="55px" class="rounded-circle flex-shrink-0 mx-2"></a>
+                {% else %}
+                <img src="{{ review.user.profile.image.url }}" alt="" width="55px" height="55px" class="rounded-circle flex-shrink-0 mx-2"></a>
+                {% endif %}
               {% else %}
                 <svg class="bd-placeholder-img flex-shrink-0 me-2 rounded-circle" width="50" height="50"
                   xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32"
@@ -68,7 +72,7 @@
           
           {% if request.user == review.user %}
           <div class="dropdown text-center" style="width: 50px;">
-            <span class="dropbtn"><i class="fa-solid fa-ellipsis fa-lg"></i></span>
+            <span class="dropbtn mt-3"><i class="fa-solid fa-ellipsis fa-lg"></i></span>
             <div class="dropdown-content">
               <a href="{% url 'review:update' review.movie.id review.pk %}" class="text-center"><i
                   class="fa-solid fa-pen fa-lg"></i></a>
@@ -76,7 +80,7 @@
             </div>
           </div>
           {% else %}
-          <span class="dropbtn"><i class="fa-solid fa-ellipsis fa-lg"></i></span>
+          <span class="dropbtn mt-3"><i class="fa-solid fa-ellipsis fa-lg"></i></span>
           {% endif %}
             
         </div>

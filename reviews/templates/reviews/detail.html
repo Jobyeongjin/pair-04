@@ -47,10 +47,17 @@
   <!-- Index-Content -->
   <div class="index-content px-3">
     <!-- Card-top -->
-    <div class="card-top">
+    <div class="card-top mt-3">
       <div class="card-profile">
-        <img src="{{ review.user.profile.image.url }}" alt="" width="55px" height="55px"
-          class="rounded-circle flex-shrink-0 mx-2">
+        {% if review.user.profile.image %}
+          {% if review.user == request.user %}
+          <a href="{% url 'accounts:profile' user.pk %}"><img src="{{ review.user.profile.image.url }}" alt="" width="55px"
+              height="55px" class="rounded-circle flex-shrink-0 mx-2"></a>
+        {% else %}
+          <img src="{{ review.user.profile.image.url }}" alt="" width="55px" height="55px"
+            class="rounded-circle flex-shrink-0 mx-2"></a>
+          {% endif %}
+        {% endif %}
         {{ review.user }}
       </div>
       {% if request.user == review.user %}
@@ -112,9 +119,14 @@
     <div class="p-3">
       <div class="d-flex align-items-center justify-content-between">
         
-        {% if request.user.profile.image %}
-          <img src="{{ request.user.profile.image.url }}" alt="" width="45px" height="45px"
-            class="rounded-circle flex-shrink-0 mx-2">
+        {% if review.user.profile.image %}
+        {% if review.user == request.user %}
+        <a href="{% url 'accounts:profile' user.pk %}"><img src="{{ review.user.profile.image.url }}" alt="" width="55px"
+            height="55px" class="rounded-circle flex-shrink-0 mx-2"></a>
+        {% else %}
+        <img src="{{ review.user.profile.image.url }}" alt="" width="55px" height="55px"
+          class="rounded-circle flex-shrink-0 mx-2"></a>
+        {% endif %}
         {% else %}
           <svg class="bd-placeholder-img flex-shrink-0 me-2 rounded-circle" width="45" height="45"
             xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32"
