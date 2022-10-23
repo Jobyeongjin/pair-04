@@ -24,9 +24,9 @@
         </a>
       </li>
       <li>
-        <a href="#">
+        <a href="{% url 'review:index' movie.pk %}">
           <i class="fa-regular fa-comment-dots fa-2x"></i>
-          <span class="index-text">댓글</span>
+          <span class="index-text">리뷰</span>
         </a>
       </li>
       <li>
@@ -48,17 +48,22 @@
   <div class="index-content px-3">
     <!-- Card-top -->
     <div class="card-top mt-3">
-      <div class="card-profile">
-        {% if review.user.profile.image %}
+      <div class="card-profile d-flex flex-column">
+        <div class="mb-2 mt-3">
+          {% if review.user.profile.image %}
           {% if review.user == request.user %}
           <a href="{% url 'accounts:profile' user.pk %}"><img src="{{ review.user.profile.image.url }}" alt="" width="55px"
               height="55px" class="rounded-circle flex-shrink-0 mx-2"></a>
-        {% else %}
+          {% else %}
           <img src="{{ review.user.profile.image.url }}" alt="" width="55px" height="55px"
             class="rounded-circle flex-shrink-0 mx-2"></a>
           {% endif %}
-        {% endif %}
-        {{ review.user }}
+          {% endif %}
+          {{ review.user }}
+        </div>
+        <div class="badge bg-info">
+          {{ review.get_date}}
+        </div>
       </div>
       {% if request.user == review.user %}
         <div class="dropdown text-center" style="width: 50px;">
@@ -72,6 +77,7 @@
       {% else %}
         <span class="dropbtn"><i class="fa-solid fa-ellipsis fa-lg"></i></span>
       {% endif %}
+      
     </div>
     <p class="my-3">{{ review.title }}</p>
     <!-- Card-img -->
