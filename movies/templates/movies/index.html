@@ -1,11 +1,12 @@
 {% extends 'base.html' %}
 
 {% block content %}
+{% include 'navbar.html' %}
   
     {% load static %}
     <!-- static 경로에 변수를 사용하려면, get_static_prefix를 사용해야 함-->
     {% comment %} <p><img src="{% static 'images/{{ movie.id }}.jpg' %}" alt="{{movie.id}}"></p> {% endcomment %}
-    <div class="container">
+    <div class="container movie-index">
       <div class="row">
         {% for movie in movies %}
         <div class="col-4 my-2">

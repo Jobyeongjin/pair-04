@@ -42,6 +42,10 @@ button:active {
   box-shadow: none;
 }
 
+.movie-index {
+  margin-top: 80px;
+}
+
 /* Navbar */
 .nav-form input:last-child {
   width: 300px;
