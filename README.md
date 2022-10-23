@@ -18,7 +18,7 @@
 
 | <img src="https://contrib.rocks/image?repo=kkinter/pair_pjt_4" /> |     |
 | ----------------------------------------------------------------- | --- |
-| 백엔드: 황성욱<br />프론트엔드: 조병진                            |     |
+| 백엔드: 황성욱<br />프론트엔드: 조병진                                          |     |
 
 </a>
 
@@ -52,7 +52,7 @@
 
 ### **추가++**
 
-- TMDB API 를 통해, JSON 파일 생성 > `python manage.py loaddata sample.json' 모델에 fixture
+- [TMDB API 를 통해, JSON 파일 생성 후 loaddata로 저장](/wiki/json.md)
 - 1:1 관계 (User - Profile) , N:M 관계 (User - Review.like_users) 모델 추가
 - Q 객체를 사용한 검색 기능 추가
 
