@@ -85,6 +85,7 @@
       </div>
       <hr>
       <div class="card p-3">
+
         {% for review in reviews %}
           <div class="card-profile d-flex flex-column">
             <div class="mb-2">
@@ -107,6 +108,29 @@
               <h5>{{ review.content }}</h5>
             </div>
           </div>
+          <div class="card-icon d-flex justify-content-around align-items-center">
+            <div class="comment-count">
+              {% if review.comment_set.all %}
+                <i class="fa-regular fa-comment fa-lg text-primary"></i>
+                <div class="comment-count-num">
+                  {{ review.comment_set.all|length }}
+                </div>
+              {% else %}
+                <i class="fa-regular fa-comment fa-lg"></i>
+              {% endif %}
+            </div>
+            <div class="comment-count">
+              {% if review.like_users.all %}
+                <i class="fa-regular fa-heart fa-lg text-danger"></i>
+                <div class="like-count-num">
+                  {{ review.like_users.all|length }}
+                </div>
+              {% else %}
+                <i class="fa-regular fa-heart fa-lg"></i>
+              {% endif %}
+            </div>
+            <i class="fa-solid fa-cloud-arrow-down fa-lg"></i>
+          </div>
           <hr>
         {% endfor %}
       </div>
@@ -121,7 +145,11 @@
           <div class="card mb-3 flex-row">
             <img src="{% get_static_prefix %}images/{{review.movie.id}}.jpg" class="card-img-top w-25" alt="...">
             <div class="card-body">
-              <h4 class="card-title">{{ review.title }}</h4>
+              <h4 class="card-title">{{ review.title }}
+              </h4>
+              <i class="fa-regular fa-heart fa-lg text-danger">
+                {{ review.like_users.all|length }}</i>
+              <span class="badge bg-primary">{{ review.get_date}}</span>
               <p class="card-text">{{ review.content }}</p>
             </div>
           </div>
