@@ -49,10 +49,12 @@
 <summary>접기/펼치기</summary>
 
 <br/>
+
 ### **추가++**
--TMDB API 를 통해, JSON 파일 생성 > `python manage.py loaddata sample.json' 모델에 fixture
--1:1 관계 (User - Profile) , N:M 관계 (User - Review.like_users) 모델 추가
--Q 객체를 사용한 검색 기능 추가
+
+- TMDB API 를 통해, JSON 파일 생성 > `python manage.py loaddata sample.json' 모델에 fixture
+- 1:1 관계 (User - Profile) , N:M 관계 (User - Review.like_users) 모델 추가
+- Q 객체를 사용한 검색 기능 추가
 
 ### **영화 관리**
 
