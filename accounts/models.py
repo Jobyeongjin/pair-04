@@ -11,4 +11,5 @@ class Profile(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     image = models.ImageField(default='dafault.png', upload_to='accounts/', blank = True)
     bio = models.TextField()
+    background_image = models.ImageField(default='background_image/dafault.png', upload_to='accounts/background/', blank = True)
     
