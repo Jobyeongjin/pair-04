@@ -51,10 +51,13 @@ def logout(request):
 
 from .models import Profile
 from .forms import ProfileForm
+from reviews.models import Comment, Review
 
 @login_required
 def profile(request, user_pk):
     user = get_user_model().objects.get(pk = user_pk)
+    reviews = Review.objects.filter(user = user_pk)
+    comments = Comment.objects.filter(user = user_pk)
     
     try:
         profile = Profile.objects.get(user = user)
@@ -64,6 +67,8 @@ def profile(request, user_pk):
     context = {
         "user" : user,
         "profile" : profile,
+        "reviews" : reviews,
+        "comments" : comments,
     }
     return render(request, 'accounts/profile.html', context)
 
@@ -93,6 +98,7 @@ def update_profile(request, profile_pk):
                 return redirect('accounts:profile', profile_pk)
     context = {
         "profile_form" : profile_form,
+        "profile" : profile,
     }
     return render(request, 'accounts/profile_create.html', context)
 
