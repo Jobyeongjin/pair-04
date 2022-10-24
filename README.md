@@ -18,7 +18,7 @@
 
 | <img src="https://contrib.rocks/image?repo=kkinter/pair_pjt_4" /> |     |
 | ----------------------------------------------------------------- | --- |
-| 백엔드: 황성욱<br />프론트엔드: 조병진                                          |     |
+| 백엔드: 황성욱<br />프론트엔드: 조병진                            |     |
 
 </a>
 
@@ -112,10 +112,36 @@
 
 ---
 
-## **구현 영상**
+## **구현 영상 📹**
 
 <br/>
 
----
+### **signup**
 
-## **배운점 및 느낀점 💡**
+![signup](https://user-images.githubusercontent.com/103917901/197483189-9d4c34a3-e7ef-4d15-a7a3-2f4589088429.gif)
+
+<br/>
+
+### **profile - create**
+
+![profile](https://user-images.githubusercontent.com/103917901/197483177-15085377-9132-482c-a53d-07714046b414.gif)
+
+<br/>
+
+### **reviews**
+
+![review](https://user-images.githubusercontent.com/103917901/197483103-99b0a2f7-33e7-4323-8bcf-3ea6abb6dade.gif)
+
+<br/>
+
+### **review - create & delete**
+
+![review-cd](https://user-images.githubusercontent.com/103917901/197483051-a1cb09b6-02c1-4557-822c-739a8aa866b2.gif)
+
+<br/>
+
+### **comment-create & delete**
+
+![comment-cd](https://user-images.githubusercontent.com/103917901/197483025-901c83f4-5932-445b-b12d-816506681900.gif)
+
+---

@@ -10,6 +10,9 @@ from django.db.models import Q
 def index(request, movie_pk):
     movie = Movie.objects.get(pk = movie_pk)
     reviews = Review.objects.filter(movie = movie_pk)
+    user_reviews = Review.objects.filter(user = request.user)
+    user_comments = Comment.objects.filter(user = request.user)
+    reviews = reviews.order_by('-pk')
     for review in reviews:
         print(review.content)
     return render(
@@ -18,6 +21,8 @@ def index(request, movie_pk):
         {
             "reviews": reviews,
             "movie" : movie,
+            'user_reviews': user_reviews,
+            'user_comments': user_comments,
         },
     )
 
@@ -79,6 +84,8 @@ def detail(request, review_pk, movie_pk):
     movie = Movie.objects.get(pk = movie_pk)
     # review = Review.objects.filter(pk = review_pk)
     review = Review.objects.get(pk = review_pk)
+    reviews = Review.objects.filter(user = request.user)
+    comments = Comment.objects.filter(user = request.user)
     
     comment_form = CommentForm()
     context = {
@@ -87,6 +94,8 @@ def detail(request, review_pk, movie_pk):
         # 'comments' : review.comment_set.all(),
         'comment_form' : comment_form,
         'movie': movie,
+        'user_reviews': reviews,
+        'user_comments': comments,
     }
     print(type(review.comment_set.all()), review.comment_set.all())
     return render(request, 'reviews/detail.html', context )
