@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
   {% include 'navbar.html' %}
@@ -122,7 +123,46 @@
     </div>
 
     <!-- Index-Foryou -->
-    <div class="index-foryou"></div>
+    <div class="index-foryou">
+      <div class="container py-2">
+        <h4 class="m-2 badge bg-success">내가 쓴 글</h4>
+        {% for review in user_reviews %}
+          <div class="card mb-3 flex-row">
+            <img src="{% get_static_prefix %}images/{{review.movie.id}}.jpg" class="card-img-top w-25" alt="...">
+            <div class="card-body">
+              <h4 class="card-title">{{ review.title }}
+              </h4>
+              <div class="comment-count d-flex justify-content-end">
+                {% if review.like_users.all %}
+                  <i class="fa-regular fa-heart fa-lg text-danger"></i>
+                  <div class="like-count-num-01">
+                    {{ review.like_users.all|length }}
+                  </div>
+                {% else %}
+                  <i class="fa-regular fa-heart fa-lg"></i>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+  
+        <h4 class="m-2 badge bg-secondary">내가 쓴 댓글</h4>
+        {% for comment in user_comments %}
+          <div class="card my-2">
+            <div class="card-title bg-light">
+              <h5>"{{ comment.review.movie.title }}" -
+                {{ comment.review.title }}</h4>
+            </div>
+            <div class="card-body">
+              <p class="card-text">
+                {{ comment.content  }}
+              </p>
+            </div>
+  
+          </div>
+        {% endfor %}
+      </div>
+    </div>
   </div>
 
 {% endblock content %}
