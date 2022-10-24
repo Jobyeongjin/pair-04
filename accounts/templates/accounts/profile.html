@@ -156,10 +156,16 @@
               <div class="card-body">
                 <h4 class="card-title">{{ review.title }}
                 </h4>
-                <i class="fa-regular fa-heart fa-lg text-danger">
-                  {{ review.like_users.all|length }}</i>
-                <span class="badge bg-primary">{{ review.get_date}}</span>
-                <p class="card-text">{{ review.content }}</p>
+                <div class="comment-count d-flex justify-content-end">
+                  {% if review.like_users.all %}
+                    <i class="fa-regular fa-heart fa-lg text-danger"></i>
+                    <div class="like-count-num-01">
+                      {{ review.like_users.all|length }}
+                    </div>
+                  {% else %}
+                    <i class="fa-regular fa-heart fa-lg"></i>
+                  {% endif %}
+                </div>
               </div>
             </div>
           {% endfor %}
